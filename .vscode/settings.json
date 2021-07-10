@@ -1,0 +1,10 @@
+{
+  "alias-skip.mappings": {
+    "@": "/src",
+    "@images": "/src/assets/images",
+    "@locales": "/src/assets/locales",
+    "@variables.scss": "/src/styles/variables.scss"
+  },
+  "alias-skip.allowedsuffix": ["js", "vue", "jsx", "ts", "scss"],
+  "svg.preview.background": "transparent"
+}

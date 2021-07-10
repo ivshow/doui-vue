@@ -1,21 +1,92 @@
 {
-  "name": "templete",
-  "version": "1.1.1",
-  "description": "A VuePress project created by vuepress-creator.",
-  "main": "index.js",
+  "name": "doui-vue",
+  "version": "1.0.0",
+  "description": "Common collection based on Vue2 and Ant Design Vue package",
+  "author": "jaydon<vshow@dooomi.com>",
+  "homepage": "http://doui.dooomi.com",
+  "repository": "ivshow/doui-vue",
+  "main": "dist/doui-vue.umd.min.js",
+  "private": false,
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vue",
+    "design",
+    "antd",
+    "ui"
+  ],
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
-  },
-  "keywords": [],
-  "author": "Feng L.H.",
-  "license": "MIT",
-  "devDependencies": {
-    "vuepress": "^1.5.2"
+    "build": "yarn build:doc & yarn build:lib",
+    "build:doc": "vuepress build docs",
+    "build:lib": "vue-cli-service build --target lib --formats umd-min src/index.js",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^2.6.11",
+    "ant-design-vue": "^1.7.6",
+    "core-js": "^3.6.5",
+    "dayjs": "^1.10.5",
+    "js-cookie": "^2.2.1",
+    "local-storage": "./lib/local-storage-v1.4.2.tgz",
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "styled-tools": "^1.7.2",
+    "v-click-outside": "^3.1.2",
+    "vue-styled-components": "./lib/vue-styled-components-v1.6.0.tgz",
+    "vuex": "^3.1.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^11.0.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^2.3.1",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.2",
+    "vuepress-plugin-clean-urls": "^1.1.2",
+    "vuepress-plugin-demo-container": "^0.2.0",
     "vuepress-theme-antdocs": "^1.3.5"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "src/**/*.{vue,css,less,scss}": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
   "creator": ">=2.0.0"
 }

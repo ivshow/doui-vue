@@ -1,0 +1,139 @@
+/*
+ * @Author : jaydon
+ * @Date   : 2021-06-17 11:44
+ * @WeChat : i-vshow
+ * @Email  : vshow@dooomi.com
+ * @Blog   : http://g.huxiaodo.com
+ */
+
+.d-relative,
+.d-rela {
+  position: relative;
+}
+
+.d-absolute,
+.d-abso {
+  position: absolute;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.d-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.d-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.d-col-center {
+  align-items: center;
+}
+
+.d-col-top {
+  align-items: flex-start;
+}
+
+.d-col-bottom {
+  align-items: flex-end;
+}
+
+.d-row-center {
+  justify-content: center;
+}
+
+.d-row-left {
+  justify-content: flex-start;
+}
+
+.d-row-right {
+  justify-content: flex-end;
+}
+
+.d-row-between {
+  justify-content: space-between;
+}
+
+.d-row-around {
+  justify-content: space-around;
+}
+
+.d-text-left {
+  text-align: left;
+}
+
+.d-text-center {
+  text-align: center;
+}
+
+.d-text-right {
+  text-align: right;
+}
+
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-hide {
+  display: none;
+}
+
+// 定义flex等分
+@for $i from 0 through 12 {
+  .d-flex-#{$i} {
+    flex: $i;
+  }
+}
+
+@for $i from 9 to 40 {
+  .d-font-#{$i} {
+    font-size: $i + px;
+  }
+}
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 80 {
+  // 只要双数和能被5除尽的数
+  @if $i % 2 == 0 or $i % 5 == 0 {
+    // 得出：d-margin-30或者d-m-30
+    .d-margin-#{$i},
+    .d-m-#{$i} {
+      margin: $i + px !important;
+    }
+
+    // 得出：d-padding-30或者d-p-30
+    .d-padding-#{$i},
+    .d-p-#{$i} {
+      padding: $i + px !important;
+    }
+
+    @each $short, $long in l left, t top, r right, b bottom {
+      // 缩写版，结果如： d-m-l-30
+      // 定义外边距
+      .d-m-#{$short}-#{$i} {
+        margin-#{$long}: $i + px !important;
+      }
+
+      // 定义内边距
+      .d-p-#{$short}-#{$i} {
+        padding-#{$long}: $i + px !important;
+      }
+
+      // 完整版，结果如：d-margin-left-30
+      // 定义外边距
+      .d-margin-#{$long}-#{$i} {
+        margin-#{$long}: $i + px !important;
+      }
+
+      // 定义内边距
+      .d-padding-#{$long}-#{$i} {
+        padding-#{$long}: $i + px !important;
+      }
+    }
+  }
+}
