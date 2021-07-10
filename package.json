@@ -22,7 +22,7 @@
     "build:lib": "vue-cli-service build --target lib --formats umd-min src/index.js",
     "deploy:doc": "vuepress build docs && node deploy.js",
     "deploy:lib": "yarn build:lib && release-it -- patch",
-    "release": "npm-run-all deploy:* "
+    "release": "npm-run-all deploy:*"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.6",

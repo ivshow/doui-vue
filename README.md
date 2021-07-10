@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://doui.dooomi.com" target="_blank">
-    <img width="200" src="https://qn.antdv.com/logo.png">
+    <img width="200" src="http://f.dooomi.com/do.png">
   </a>
 </p>
 
