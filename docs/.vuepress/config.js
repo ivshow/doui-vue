@@ -40,5 +40,5 @@ module.exports = {
         })
       );
   },
-  plugins: ['demo-container', 'clean-urls']
+  plugins: ['demo-container', 'clean-urls', 'smooth-scroll']
 };

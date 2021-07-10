@@ -6,13 +6,13 @@
  * @Blog   : http://g.huxiaodo.com
  */
 
-import creatVuex from './store';
+import createVuex from './store';
 import directive from './directive';
 
 export let vuex = {};
 
 const install = (Vue, options = {}) => {
-  vuex = creatVuex(Vue, options.vuex);
+  vuex = createVuex(Vue, options.vuex);
   Vue.use(directive);
 };
 

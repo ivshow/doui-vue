@@ -17,9 +17,9 @@ footer: MIT Licensed | Copyright © 2021 jaydon Left-Handed
 ## 安装
 
 ```bash
-npm install doui-vue -S
-# OR
 yarn add doui-vue
+# OR
+npm install doui-vue --save
 ```
 
 ## 使用

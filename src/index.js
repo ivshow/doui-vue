@@ -14,6 +14,8 @@ import './styles/index.scss';
 import 'ant-design-vue/dist/antd.css';
 
 const install = (Vue, options) => {
+  Vue.config.productionTip = false;
+
   Vue.use(Antd).use(Components).use(utils).use(plugins, options);
 };
 
