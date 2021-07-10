@@ -1,15 +1,15 @@
 <p align="center">
-  <a href="http://v.huxiaodo.com" target="_blank">
+  <a href="http://doui.dooomi.com" target="_blank">
     <img width="200" src="https://qn.antdv.com/logo.png">
   </a>
 </p>
 
 <h1 align="center">
-  <a href="http://v.huxiaodo.com" target="_blank">Antd View</a>
+  <a href="http://doui.dooomi.com" target="_blank">Doui</a>
 </h1>
 
 <div align="center">
-基于 Vue3 和 <a href="https://2x.antdv.com/docs/vue/introduce-cn/" target="_blank">Ant Design Vue</a> 二次封装常用的业务组件、工具类集合。
+基于 Vue2 和 <a href="https://antdv.com" target="_blank">Ant Design Vue</a> 二次封装常用的业务组件、工具类集合。
 </div>
 
 <br/>

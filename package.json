@@ -1,6 +1,6 @@
 {
   "name": "doui-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "jaydon<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
@@ -19,10 +19,10 @@
   ],
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "yarn build:doc & yarn build:lib",
-    "build:doc": "vuepress build docs",
     "build:lib": "vue-cli-service build --target lib --formats umd-min src/index.js",
-    "lint": "vue-cli-service lint"
+    "deploy:doc": "vuepress build docs && node deploy.js",
+    "deploy:lib": "yarn build:lib && release-it -- patch",
+    "release": "npm-run-all deploy:* "
   },
   "dependencies": {
     "ant-design-vue": "^1.7.6",
@@ -45,12 +45,16 @@
     "@vue/cli-service": "~4.3.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.0",
+    "cos-nodejs-sdk-v5": "^2.9.21",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "husky": "^4.2.5",
     "lint-staged": "^11.0.0",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
+    "qcloud-upload": "^1.5.0",
+    "release-it": "^14.10.0",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
@@ -59,6 +63,21 @@
     "vuepress-plugin-clean-urls": "^1.1.2",
     "vuepress-plugin-demo-container": "^0.2.0",
     "vuepress-theme-antdocs": "^1.3.5"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}",
+      "requireCleanWorkingDir": false,
+      "tag": false,
+      "commit": true,
+      "push": true
+    },
+    "github": {
+      "release": false
+    },
+    "npm": {
+      "publish": false
+    }
   },
   "husky": {
     "hooks": {
