@@ -6,4 +6,21 @@
  * @Blog   : http://dooomi.com
  */
 
+import { Vue, vuex } from '@';
+
 export const parseContext = context => context.keys().reduce((prev, key) => Object.assign(prev, context(key)), {});
+
+export const addPrototype = (key, value) => (Vue.prototype['$' + key] = value);
+
+export const newInstance = props => {
+  const vm = new Vue({
+    store: vuex.store,
+    ...props
+  }).$mount();
+
+  document.body.appendChild(vm.$el);
+
+  vm.destroy = () => vm.$children[0].$destroy();
+
+  return vm;
+};

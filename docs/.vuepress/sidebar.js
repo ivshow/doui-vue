@@ -8,15 +8,16 @@
 
 module.exports = [
   { path: '/', title: '简介' },
-  { path: '/components/font', title: '字体' },
-  { path: '/components/theme', title: '主题' },
   {
-    title: '组件',
-    children: [{ path: '/components/container', title: 'Container 容器' }]
+    title: '基础组件',
+    children: [{ path: '/base/button', title: 'Button 按钮' }]
+  },
+  {
+    title: '表单组件',
+    children: [{ path: '/data/form', title: 'Form 表单' }]
+  },
+  {
+    title: '反馈组件',
+    children: [{ path: '/feedback/modal', title: 'Modal 模态框' }]
   }
-  // {
-  //   path: '/utils',
-  //   title: '工具方法',
-  //   children: [],
-  // },
 ];

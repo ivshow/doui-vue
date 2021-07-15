@@ -6,7 +6,7 @@
  * @Blog   : http://dooomi.com
  */
 
-import createVuex from './store';
+import createVuex from './vuex';
 import directive from './directive';
 
 export let vuex = {};

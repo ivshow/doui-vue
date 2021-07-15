@@ -7,18 +7,23 @@
  */
 
 import Components from './components';
-import plugins, { vuex } from './plugins';
+import plugins from './plugins';
 import utils from './utils';
 import Antd from 'ant-design-vue';
 import './styles/index.scss';
 import 'ant-design-vue/dist/antd.css';
 
-const install = (Vue, options) => {
-  Vue.config.productionTip = false;
+let Vue;
 
-  Vue.use(Antd).use(Components).use(utils).use(plugins, options);
+const install = (vue, options) => {
+  vue.config.productionTip = false;
+  Vue = vue;
+
+  vue.use(Antd).use(Components).use(utils).use(plugins, options);
 };
 
-export { vuex };
-
+export { Vue };
+export * from './components';
+export * from './plugins';
+export * from './utils';
 export default { install };

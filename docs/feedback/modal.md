@@ -7,6 +7,7 @@ title: Container
 <code>d-container</code> 提供了将你的网站内容居中和水平填充的功能。 你还可以使用 <code>compact</code> 属性将容器在所有视口和设备尺寸上完全扩展。
 
 ::: demo
+
 ```vue
 <template>
   <d-container>
@@ -33,13 +34,13 @@ export default {
   data() {
     return {
       message: 'Hello Vue'
-    }
+    };
   }
-}
+};
 </script>
 ```
-:::
 
+:::
 
 ## 属性
 

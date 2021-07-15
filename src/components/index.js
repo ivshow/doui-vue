@@ -7,6 +7,8 @@
  */
 
 import _ from 'lodash';
+import openModal from './modal';
+import { addPrototype } from '@/utils';
 
 const defaultProps = {
   inheritAttrs: false
@@ -16,12 +18,18 @@ const defaultProps = {
 const components = require.context('./', true, /index\.(vue|js)$/);
 
 const install = Vue => {
+  addPrototype('openModal', openModal);
+
   components.keys().forEach(key =>
     _.forEach(components(key), (component, k) => {
+      if (!component.render) return;
+
       const name = k === 'default' ? component.name || _.kebabCase(key.replace(/\.\/|index\.(vue|js)/g, '')) : k;
       Vue.component(`d-${name.toLowerCase()}`, _.merge({}, defaultProps, component));
     })
   );
 };
+
+export { openModal };
 
 export default { install };

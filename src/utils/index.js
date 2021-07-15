@@ -10,7 +10,7 @@ import _ from 'lodash';
 import dayjs from 'dayjs';
 import ls from 'local-storage';
 import jsCookie from 'js-cookie';
-import { parseContext } from './common';
+import { parseContext, addPrototype } from './common';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/zh-cn';
 
@@ -21,8 +21,6 @@ const context = require.context('./', false, /^(?!\.\/index).*\.js$/);
 const utils = parseContext(context);
 
 const install = Vue => {
-  const addPrototype = (key, value) => (Vue.prototype['$' + key] = value);
-
   addPrototype('d', Object.assign(utils, _));
   addPrototype('ls', ls);
   addPrototype('dayjs', dayjs);
@@ -30,4 +28,4 @@ const install = Vue => {
   addPrototype('event', new Vue());
 };
 
-export default { install };
+module.exports = { ...utils, install };
