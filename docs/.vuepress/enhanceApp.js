@@ -1,7 +1,8 @@
-import AntdView from '@';
+import Doui from '@';
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
 
-export default ({ Vue }) => {
-  Vue.use(AntdView, {
+export default ({ Vue, options }) => {
+  Vue.use(Doui, {
     vuex: {
       saveKeys: ['vuex_common'],
       initialState: {
@@ -10,6 +11,19 @@ export default ({ Vue }) => {
           language: 'zh-CN'
         }
       }
+    }
+  });
+
+  Vue.mixin({
+    provide: function () {
+      return {
+        localeData: {
+          antLocale: {
+            ...zhCN,
+            exist: true
+          }
+        }
+      };
     }
   });
 };
