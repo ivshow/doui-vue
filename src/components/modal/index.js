@@ -15,7 +15,14 @@ const openModal = ({ onOk, content, ...props } = {}) => {
     },
     render(h) {
       return (
-        <a-modal v-model={this.visible} attrs={props} onOk={this.handleOk} afterClose={destroy}>
+        <a-modal
+          v-model={this.visible}
+          onOk={this.handleOk}
+          afterClose={destroy}
+          confirmLoading={this.vuex_loading}
+          maskClosable={false}
+          attrs={props}
+        >
           {typeof content === 'function' ? content(h) : content}
         </a-modal>
       );
