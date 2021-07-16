@@ -20,7 +20,6 @@ export const openModal = ({ onOk, content, ...props } = {}) => {
           onOk={this.handleOk}
           afterClose={destroy}
           confirmLoading={this.vuex_loading}
-          maskClosable={false}
           attrs={props}
         >
           {typeof content === 'function' ? content(h) : content}

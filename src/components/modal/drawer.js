@@ -32,7 +32,6 @@ export const openDrawer = ({ onOk, content, ...props } = {}) => {
           placement="right"
           onOk={this.handleOk}
           afterVisibleChange={destroy}
-          maskClosable={false}
           width="500"
           onClose={this.handleClose}
           attrs={props}
@@ -43,7 +42,9 @@ export const openDrawer = ({ onOk, content, ...props } = {}) => {
               <d-button type="default" onClick={this.handleClose}>
                 取消
               </d-button>
-              <d-button onClick={this.handleOk}>确定</d-button>
+              <d-button onClick={this.handleOk} loading={this.vuex_loading}>
+                确定
+              </d-button>
             </a-space>
           </div>
         </a-drawer>

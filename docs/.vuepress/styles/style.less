@@ -24,15 +24,22 @@
   .theme-antdocs-content pre[class*='language-'] {
     margin: 0;
   }
-  .sidebar-sub-headers {
-    display: none;
-  }
   .theme-antdocs-content > table {
     width: 100%;
     display: table;
     td:nth-child(3) {
       width: 22%;
       color: #c41d7f;
+    }
+  }
+  .sidebar-links {
+    .sidebar-link,
+    .sidebar-heading {
+      line-height: 45px;
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      display: block;
     }
   }
 }
@@ -57,5 +64,15 @@
   }
   &.quick-start ol {
     margin-top: 20px;
+  }
+}
+
+.theme-antdocs-content {
+  h1 {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaecef;
+  }
+  h1 + p {
+    margin-bottom: 1rem;
   }
 }

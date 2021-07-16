@@ -1,6 +1,6 @@
 {
   "name": "doui-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "jaydon<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
@@ -77,8 +77,11 @@
       "release": false
     },
     "npm": {
-      "publish": false
+      "publish": true
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "husky": {
     "hooks": {

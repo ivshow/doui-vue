@@ -2,9 +2,9 @@
 pageClass: quick-start
 ---
 
-### 以下内容已注入，无需通过`import`引入，可直接使用
+# 快速上手
 
----
+> 以下内容已注入，无需通过`import`引入，可直接使用
 
 1. ant-design-vue:
 

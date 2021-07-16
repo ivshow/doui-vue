@@ -14,14 +14,13 @@ module.exports = {
       lang: 'zh-CN'
     }
   },
-  backToTop: true,
   themeConfig: {
+    sidebarDepth: 0,
     smoothScroll: true,
+    backToTop: true,
     // nav: require("./config/nav"),
     sidebar: require('./sidebar'),
-    lastUpdated: 'Last Updated',
-    repo: 'https://github.com/ivshow/doui.git',
-    editLinks: false
+    repo: 'https://github.com/ivshow/doui.git'
   },
   configureWebpack: {
     resolve: {
@@ -42,7 +41,6 @@ module.exports = {
   },
   plugins: [
     'demo-container',
-    'clean-urls',
     'smooth-scroll',
     [
       '@vuepress/register-components',
