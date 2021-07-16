@@ -7,11 +7,18 @@
 -->
 
 <template>
-  <a-button type="primary" v-bind="{ ...$attrs, ...$props }" v-on="$listeners">
+  <a-button v-bind="{ ...$attrs, ...$props }" v-on="$listeners">
     <slot />
   </a-button>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    type: {
+      type: String,
+      default: 'primary'
+    }
+  }
+};
 </script>

@@ -1,6 +1,6 @@
 import { newInstance } from '@';
 
-const openModal = ({ onOk, content, ...props } = {}) => {
+export const openModal = ({ onOk, content, ...props } = {}) => {
   const { destroy } = newInstance({
     data() {
       return {
@@ -32,4 +32,4 @@ const openModal = ({ onOk, content, ...props } = {}) => {
   return destroy;
 };
 
-export default openModal;
+export * from './drawer';

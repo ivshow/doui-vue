@@ -1,6 +1,6 @@
-# Modal 模态框
+# Drawer 抽屉
 
-继承 `Antd Modal`的所有 Api，弹框内容可以传入自定义组件
+继承 `Antd Drawer`的所有 Api，抽屉内容可以传入自定义组件
 
 <br/>
 
@@ -8,21 +8,21 @@
 
 ```vue
 <template>
-  <d-button @click="handleOpen">打开弹框</d-button>
+  <d-button @click="handleOpen">打开抽屉</d-button>
 </template>
 
 <script>
 export default {
   methods: {
     handleOpen() {
-      this.$openModal({
-        title: '弹框',
+      this.$openDrawer({
+        title: '抽屉',
         content: <d-form ref="form" />,
         onOk: () => this.$refs.form.submit().then(this.handleClose)
       });
     },
     handleClose() {
-      console.log('点击确定，弹框关闭了');
+      console.log('点击确定，抽屉关闭了');
     }
   }
 };

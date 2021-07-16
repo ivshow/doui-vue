@@ -12,5 +12,41 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+.d-drawer {
+  .ant-drawer-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+  }
+
+  &-content {
+    padding-top: 55px;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+  &-footer {
+    padding: 16px 24px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 3;
+    background: #fff;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100px;
+      right: -100px;
+      height: 1px;
+      background: #e8e8e8;
+    }
+  }
 }

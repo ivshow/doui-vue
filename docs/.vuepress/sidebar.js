@@ -18,6 +18,9 @@ module.exports = [
   },
   {
     title: '反馈组件',
-    children: [{ path: '/feedback/modal', title: 'Modal 模态框' }]
+    children: [
+      { path: '/feedback/modal', title: 'Modal 模态框' },
+      { path: '/feedback/drawer', title: 'Drawer 抽屉' }
+    ]
   }
 ];

@@ -7,7 +7,7 @@
  */
 
 import _ from 'lodash';
-import openModal from './modal';
+import { openModal, openDrawer } from './modal';
 import { addPrototype } from '@/utils';
 
 const defaultProps = {
@@ -19,6 +19,7 @@ const components = require.context('./', true, /index\.(vue|js)$/);
 
 const install = Vue => {
   addPrototype('openModal', openModal);
+  addPrototype('openDrawer', openDrawer);
 
   components.keys().forEach(key =>
     _.forEach(components(key), (component, k) => {
@@ -30,6 +31,5 @@ const install = Vue => {
   );
 };
 
-export { openModal };
-
+export * from './modal';
 export default { install };

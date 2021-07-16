@@ -1,38 +1,55 @@
-## title: Container
+# Form 表单
 
-# Container 容器
+继承 `Antd Form`的所有 Api
 
-<code>d-container</code> 提供了将你的网站内容居中和水平填充的功能。 你还可以使用 <code>compact</code> 属性将容器在所有视口和设备尺寸上完全扩展。
+<br/>
 
 ::: demo
 
 ```vue
 <template>
-  <d-container>
-    <a-row>
-      <a-col :span="12">col-12</a-col>
-      <a-col :span="12">col-12</a-col>
-    </a-row>
-    <a-row>
-      <a-col :span="8">col-8</a-col>
-      <a-col :span="8">col-8</a-col>
-      <a-col :span="8">col-8</a-col>
-    </a-row>
-    <a-row>
-      <a-col :span="6">col-6</a-col>
-      <a-col :span="6">col-6</a-col>
-      <a-col :span="6">col-6</a-col>
-      <a-col :span="6">col-6</a-col>
-    </a-row>
-  </d-container>
+  <d-form ref="form"></d-form>
 </template>
 
 <script>
+const fetch = form => {
+  console.log('请求开始: ', form);
+  return new Promise(resolve =>
+    setTimeout(() => {
+      resolve();
+      console.log('请求结束');
+    }, 2000)
+  );
+};
+
 export default {
-  data() {
-    return {
-      message: 'Hello Vue'
-    };
+  methods: {
+    refresh() {
+      console.log('刷新');
+    },
+    openModal({ title, onOk, value }) {
+      this.$openModal({
+        title,
+        content: <d-form ref="form" value={value} />,
+        onOk: () => this.$refs.form.submit().then(onOk).then(this.refresh)
+      });
+    },
+    handleAdd() {
+      this.openModal({
+        title: '新增',
+        onOk: fetch
+      });
+    },
+    handleEdit() {
+      this.openModal({
+        title: '编辑',
+        value: {
+          user: 'user',
+          password: 'password'
+        },
+        onOk: fetch
+      });
+    }
   }
 };
 </script>
