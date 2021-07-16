@@ -8,47 +8,45 @@
 
 ```vue
 <template>
-  <d-form ref="form"></d-form>
+  <d-form ref="form" :model="form" :rules="rules">
+    <a-form-model-item label="name" prop="user">
+      <a-input v-model="form.user" placeholder="username">
+        <a-icon slot="prefix" type="user" />
+      </a-input>
+    </a-form-model-item>
+    <a-form-model-item label="password" prop="password">
+      <a-input v-model="form.password" placeholder="Password">
+        <a-icon slot="prefix" type="lock" />
+      </a-input>
+    </a-form-model-item>
+    <a-form-model-item>
+      <d-button @click="handleSubmit">提交</d-button>
+      <d-button type="default" @click="handleResetFields">重置</d-button>
+    </a-form-model-item>
+  </d-form>
 </template>
 
 <script>
-const fetch = form => {
-  console.log('请求开始: ', form);
-  return new Promise(resolve =>
-    setTimeout(() => {
-      resolve();
-      console.log('请求结束');
-    }, 2000)
-  );
-};
-
 export default {
+  data() {
+    return {
+      form: {
+        user: '',
+        password: ''
+      },
+      rules: {
+        user: [{ required: true, message: 'Please input Activity name', trigger: 'blur' }],
+        password: [{ required: true, message: 'Please input Activity password', trigger: 'blur' }]
+      }
+    };
+  },
   methods: {
-    refresh() {
-      console.log('刷新');
+    async handleSubmit() {
+      const form = await this.$refs.form.submit();
+      console.log(form);
     },
-    openModal({ title, onOk, value }) {
-      this.$openModal({
-        title,
-        content: <d-form ref="form" value={value} />,
-        onOk: () => this.$refs.form.submit().then(onOk).then(this.refresh)
-      });
-    },
-    handleAdd() {
-      this.openModal({
-        title: '新增',
-        onOk: fetch
-      });
-    },
-    handleEdit() {
-      this.openModal({
-        title: '编辑',
-        value: {
-          user: 'user',
-          password: 'password'
-        },
-        onOk: fetch
-      });
+    handleResetFields() {
+      this.$refs.form.resetFields();
     }
   }
 };
@@ -59,12 +57,11 @@ export default {
 
 ## 属性
 
-| 参数    | 说明                                   | 类型                 | 默认值             |
-| ------- | -------------------------------------- | -------------------- | ------------------ |
-| compact | <p>是否移除 d-container 的 padding</p> | <span>boolean</span> | <code>false</code> |
+| 参数 | 说明 | 类型 | 默认值 |
+| ---- | ---- | ---- | ------ |
 
-## 插槽
+## 方法
 
-| 名称    | 描述                   |
-| ------- | ---------------------- |
-| default | <p>默认 Vue 插槽。</p> |
+| 名称   | 描述                         | 参数                       |
+| ------ | ---------------------------- | -------------------------- |
+| submit | 表单校验成功后，返回表单数据 | () => Promise&lt;value&gt; |

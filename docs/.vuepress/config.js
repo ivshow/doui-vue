@@ -40,5 +40,16 @@ module.exports = {
         })
       );
   },
-  plugins: ['demo-container', 'clean-urls', 'smooth-scroll']
+  plugins: [
+    'demo-container',
+    'clean-urls',
+    'smooth-scroll',
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.join(__dirname, 'components'),
+        getComponentName: file => 'demo-' + file.replace(/\/|\\/g, '-').toLowerCase()
+      }
+    ]
+  ]
 };

@@ -17,8 +17,8 @@ export default {
     handleOpen() {
       this.$openDrawer({
         title: '抽屉',
-        content: <d-form ref="form" />,
-        onOk: () => this.$refs.form.submit().then(this.handleClose)
+        content: <div>自定义组件</div>,
+        onOk: this.handleClose
       });
     },
     handleClose() {
@@ -33,7 +33,7 @@ export default {
 
 ## 属性
 
-| 参数    | 说明         | 类型                | 默认值 |
-| ------- | ------------ | ------------------- | ------ |
-| content | 自定义组件   | VNode / function(h) |        |
-| onOk    | 点击确定回调 | function            |        |
+| 参数    | 说明         | 类型                      | 默认值 |
+| ------- | ------------ | ------------------------- | ------ |
+| content | 自定义组件   | VNode / function(h)       |        |
+| onOk    | 点击确定回调 | () => Promise&lt;void&gt; |        |

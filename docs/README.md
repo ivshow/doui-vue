@@ -1,18 +1,31 @@
 ---
 home: false
-footer: MIT Licensed | Copyright © 2021 jaydon Left-Handed
+pageClass: index
+footer: MIT Licensed | Copyright © 2021 Written by jaydon
 ---
 
 # 简介
 
+---
+
+<div class="logos">
+  <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" />
+  <span class="sign">+</span>
+  <img src="https://cn.vuejs.org/images/logo.png" />
+  <span class="sign">=</span>
+  <img class="logo" src="http://f.dooomi.com/image/do.png" />
+</div>
+
 > 基于 Vue2 和 [Ant Design Vue](https://antdv.com) 二次封装常用的业务组件、工具类集合。
 
-## 主要功能
+## 特性
 
 - 常用业务组件
-- 内置 css 样式库
-- 注入常用的工具方法
-- 注入 vuex
+- 内置 css 样式
+- 常用的工具方法
+- 自定义指令
+- vuex
+- css in js
 
 ## 安装
 

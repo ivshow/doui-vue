@@ -1,6 +1,8 @@
 # Button 按钮
 
-`code`
+继承 `Antd Button`的所有 Api
+
+<br/>
 
 ::: demo
 
@@ -31,7 +33,7 @@ export default {
     openModal({ title, onOk, value }) {
       this.$openModal({
         title,
-        content: <d-form ref="form" value={value} />,
+        content: () => <demo-form ref="form" value={value} />,
         onOk: () => this.$refs.form.submit().then(onOk).then(this.refresh)
       });
     },
@@ -60,12 +62,6 @@ export default {
 
 ## 属性
 
-| 参数    | 说明                                   | 类型                 | 默认值             |
-| ------- | -------------------------------------- | -------------------- | ------------------ |
-| compact | <p>是否移除 d-container 的 padding</p> | <span>boolean</span> | <code>false</code> |
-
-## 插槽
-
-| 名称    | 描述                   |
-| ------- | ---------------------- |
-| default | <p>默认 Vue 插槽。</p> |
+| 参数 | 说明     | 类型   | 默认值    |
+| ---- | -------- | ------ | --------- |
+| type | 按钮类型 | string | `primary` |

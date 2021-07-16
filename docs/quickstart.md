@@ -1,53 +1,8 @@
-<p align="center">
-  <a href="http://doui.dooomi.com" target="_blank">
-    <img width="200" src="http://f.dooomi.com/image/do.png">
-  </a>
-</p>
-
-<br/>
-
-<div align="center">
-基于 Vue2 和 <a href="https://antdv.com" target="_blank">Ant Design Vue</a> 二次封装常用的业务组件、工具类集合。
-</div>
-
+---
+pageClass: quick-start
 ---
 
-## 特性
-
-- 常用业务组件
-- 内置 css 样式
-- 常用的工具方法
-- 自定义指令
-- vuex
-- css in js
-
-## 安装
-
-```bash
-yarn add doui-vue
-# OR
-npm install doui-vue --save
-```
-
-## 使用
-
-```js
-import Vue from 'vue';
-import App from './App';
-import Doui, { vuex } from 'doui-vue';
-import 'doui-vue/dist/doui-vue.css';
-
-Vue.use(Doui);
-
-new Vue({
-  store: vuex.store,
-  render: h => h(App)
-}).$mount('#app');
-```
-
-<br/>
-
-### 以下内容已注入，无需通过 import 引入，可直接使用
+### 以下内容已注入，无需通过`import`引入，可直接使用
 
 ---
 

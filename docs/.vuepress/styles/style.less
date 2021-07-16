@@ -30,5 +30,32 @@
   .theme-antdocs-content > table {
     width: 100%;
     display: table;
+    td:nth-child(3) {
+      width: 22%;
+      color: #c41d7f;
+    }
+  }
+}
+
+.theme-container {
+  &.index {
+    .logos {
+      margin: 30px;
+      text-align: center;
+    }
+    .sign {
+      font-size: 30px;
+      color: #aaa;
+      margin: 0 20px;
+    }
+    img {
+      height: 130px;
+    }
+    .logo {
+      height: 115px;
+    }
+  }
+  &.quick-start ol {
+    margin-top: 20px;
   }
 }
