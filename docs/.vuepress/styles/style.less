@@ -1,3 +1,5 @@
+@import './demo.less';
+
 #app {
   .navbar .site-name {
     font-size: 1.7rem;
@@ -15,7 +17,6 @@
       width: 100%;
     }
   }
-
   .demo-block .meta {
     background: none;
     border-radius: 0;
@@ -23,26 +24,7 @@
   .theme-antdocs-content pre[class*='language-'] {
     margin: 0;
   }
-  .demo-block-control {
-    position: relative;
-    left: 0 !important;
-  }
-}
-
-.demo-container {
-  .ant-row:not(:last-child) {
-    margin-bottom: 30px;
-  }
-  .ant-col {
-    height: 40px;
-    line-height: 40px;
-    color: #fff;
-    text-align: center;
-    &:nth-child(2n + 1) {
-      background-color: rgb(62, 175, 124, 0.75);
-    }
-    &:nth-child(2n) {
-      background-color: #3eaf7c;
-    }
+  .sidebar-sub-headers {
+    display: none;
   }
 }

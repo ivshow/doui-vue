@@ -6,5 +6,6 @@
     "@variables.scss": "/src/styles/variables.scss"
   },
   "alias-skip.allowedsuffix": ["js", "vue", "jsx", "ts", "scss"],
-  "svg.preview.background": "transparent"
+  "svg.preview.background": "transparent",
+  "cSpell.words": ["vuepress"]
 }
