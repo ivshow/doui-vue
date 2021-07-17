@@ -8,12 +8,13 @@
 
 import createVuex from './vuex';
 import directive from './directive';
+import mixin from './mixin';
 
 export let vuex = {};
 
 const install = (Vue, options = {}) => {
   vuex = createVuex(Vue, options.vuex);
-  Vue.use(directive);
+  Vue.use(directive).use(mixin);
 };
 
 export default { install };

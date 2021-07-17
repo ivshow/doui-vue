@@ -7,7 +7,7 @@
 -->
 
 <template>
-  <a-button v-bind="{ ...$attrs, ...$props }" v-on="$listeners">
+  <a-button v-bind="$allProps" v-on="$listeners">
     <slot />
   </a-button>
 </template>

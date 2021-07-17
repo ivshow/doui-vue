@@ -1,7 +1,7 @@
-import { newInstance } from '@';
+import { renderComponent } from '@';
 
 export const openModal = ({ onOk, content, ...props } = {}) => {
-  const { destroy } = newInstance({
+  const { destroy } = renderComponent({
     data() {
       return {
         visible: true

@@ -17,10 +17,10 @@ module.exports = {
   themeConfig: {
     sidebarDepth: 0,
     smoothScroll: true,
-    backToTop: true,
-    // nav: require("./config/nav"),
+    backToTop: false,
+    nav: [{ text: '主页', link: 'http://dooomi.com' }],
     sidebar: require('./sidebar'),
-    repo: 'https://github.com/ivshow/doui.git'
+    repo: 'ivshow/doui.git'
   },
   configureWebpack: {
     resolve: {
@@ -42,6 +42,7 @@ module.exports = {
   plugins: [
     'demo-container',
     'smooth-scroll',
+    '@vuepress/back-to-top',
     [
       '@vuepress/register-components',
       {

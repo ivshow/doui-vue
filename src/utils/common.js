@@ -12,7 +12,7 @@ export const parseContext = context => context.keys().reduce((prev, key) => Obje
 
 export const addPrototype = (key, value) => (Vue.prototype['$' + key] = value);
 
-export const newInstance = props => {
+export const renderComponent = props => {
   const vm = new Vue({
     store: vuex.store,
     ...props

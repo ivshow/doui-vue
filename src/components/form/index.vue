@@ -1,5 +1,5 @@
 <template>
-  <a-form-model ref="form" v-bind="{ ...$attrs, ...$props }">
+  <a-form-model ref="form" v-bind="$allProps">
     <slot />
   </a-form-model>
 </template>

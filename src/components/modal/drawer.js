@@ -6,10 +6,10 @@
  * @Blog   : http://dooomi.com
  */
 
-import { newInstance } from '@';
+import { renderComponent } from '@';
 
 export const openDrawer = ({ onOk, content, ...props } = {}) => {
-  const { destroy } = newInstance({
+  const { destroy } = renderComponent({
     data() {
       return {
         visible: true
