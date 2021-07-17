@@ -44,14 +44,11 @@ import 'doui-vue/dist/doui-vue.css';
 
 Vue.use(Doui);
 
-const { store } = new Vuex(vuexConfig);
+const { store } = new Vuex();
 
 const router = new Router({
-  base: '',
-  defaultMeta: {},
   components: require.context('@/views/', true, /index\.vue$/),
-  lazyLoad: filePath => import(`@/views/${filePath}`),
-  ...
+  lazyLoad: filePath => import(`@/views/${filePath}`)
 });
 
 new Vue({
