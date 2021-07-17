@@ -8,8 +8,10 @@
 
 const install = Vue => {
   Vue.mixin({
-    created() {
-      this.$allProps = { ...this.$attrs, ...this.$props };
+    computed: {
+      $allProps() {
+        return { ...this.$attrs, ...this.$props };
+      }
     }
   });
 };

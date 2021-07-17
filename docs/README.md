@@ -23,6 +23,7 @@ footer: MIT Licensed | Copyright © 2021 Written by jaydon
 - 常用的工具方法
 - 自定义指令
 - vuex
+- vue-router
 - css in js
 
 ## 安装
@@ -38,13 +39,24 @@ npm install doui-vue --save
 ```js
 import Vue from 'vue';
 import App from './App';
-import Doui, { vuex } from 'doui-vue';
+import Doui, { Vuex, Router } from 'doui-vue';
 import 'doui-vue/dist/doui-vue.css';
 
 Vue.use(Doui);
 
+const { store } = new Vuex(vuexConfig);
+
+const router = new Router({
+  base: '',
+  defaultMeta: {},
+  components: require.context('@/views/', true, /index\.vue$/),
+  lazyLoad: filePath => import(`@/views/${filePath}`),
+  ...
+});
+
 new Vue({
-  store: vuex.store,
+  store,
+  router,
   render: h => h(App)
 }).$mount('#app');
 ```

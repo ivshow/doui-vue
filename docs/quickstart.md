@@ -18,18 +18,28 @@ this.$message.success('提示文案');
 ...
 ```
 
-2. vuex:
+2. vue-router:
+
+```js
+const router = new Router({
+  base: '',
+  defaultMeta: {},
+  components: require.context('@/views/', true, /index\.vue$/),
+  lazyLoad: filePath => import(`@/views/${filePath}`),
+  ...
+});
+```
+
+3. vuex:
 
 ```js
 // 配置
-Vue.use(Doui, {
-  vuex: {
-    saveKeys: ['vuex_common'],
-    initialState: {
-      vuex_loading: false,
-      vuex_common: {
-        language: 'zh-CN'
-      }
+const { state, store, update } = new Vuex({
+  saveKeys: ['vuex_common'],
+  initialState: {
+    vuex_loading: false,
+    vuex_common: {
+      language: 'zh-CN'
     }
   }
 });
@@ -39,9 +49,10 @@ this.vuex_loading;
 
 // 修改
 this.$vuex('vuex_loading', true);
+update('vuex_loading', true);
 ```
 
-3. utils:
+4. utils:
 
 ```js
 // local-storage
@@ -65,7 +76,7 @@ this.$d.cloneDeep();
 ...
 ```
 
-4. 内置样式:
+5. 内置样式:
 
 ```
 .d-rela
@@ -80,13 +91,13 @@ this.$d.cloneDeep();
 ...
 ```
 
-5. 自定义 directive:
+6. 自定义 directive:
 
 ```vue
 <component v-click-outside="onClickOutside"></component>
 ```
 
-6. vue-styled-components:
+7. vue-styled-components:
 
 ```js
 const Title = styled.div`

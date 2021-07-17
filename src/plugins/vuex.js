@@ -6,19 +6,19 @@
  * @Blog   : http://dooomi.com
  */
 
-import Vuex, { mapState } from 'vuex';
+import { Vue } from '@';
+import BasicVuex, { mapState } from 'vuex';
 import _ from 'lodash';
 import ls from 'local-storage';
 
 /**
- * @author: jaydon
- * @description:
  * 1.saveKeys: 需要永久存储在state中的变量名
  * 2.initialState: 加上vuex_前缀，是防止变量名冲突，也让人一目了然
  */
 
-export default (Vue, options = {}) => {
-  const { saveKeys, initialState } = options;
+export let vuex = {};
+
+export function Vuex({ saveKeys, initialState } = {}) {
   const state = _.merge(initialState, ls('saveState'));
 
   const setState = (state, { key, value }) => {
@@ -36,9 +36,7 @@ export default (Vue, options = {}) => {
     }
   };
 
-  Vue.use(Vuex);
-
-  const store = new Vuex.Store({
+  const store = new BasicVuex.Store({
     state,
     mutations: {
       setState
@@ -57,5 +55,13 @@ export default (Vue, options = {}) => {
     }
   });
 
-  return { state, store, update };
+  vuex = { state, store, update };
+
+  return vuex;
+}
+
+export default {
+  install(Vue) {
+    Vue.use(BasicVuex);
+  }
 };

@@ -6,15 +6,15 @@
  * @Blog   : http://dooomi.com
  */
 
-import createVuex from './vuex';
+import router from './router';
+import vuex from './vuex';
 import directive from './directive';
 import mixin from './mixin';
 
-export let vuex = {};
-
-const install = (Vue, options = {}) => {
-  vuex = createVuex(Vue, options.vuex);
-  Vue.use(directive).use(mixin);
+const install = Vue => {
+  Vue.use(directive).use(mixin).use(vuex).use(router);
 };
 
+export * from './router';
+export * from './vuex';
 export default { install };
