@@ -15,11 +15,13 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err);
 };
 
+export let router = {};
+
 export function Router(params) {
   if (!params) return;
 
-  const { components, defaultMeta, lazyLoad, ...restRoute } = params;
-  const routes = components.keys().map(key => {
+  const { components, meta: defaultMeta, lazyLoad, ...restRoute } = params;
+  const routes = components?.keys().map(key => {
     const { name, meta } = components(key).default;
     const { path: alias, ...restMeta } = _.merge({}, defaultMeta, meta);
     const fileName = key.replace(/\.\//g, '');
@@ -34,10 +36,12 @@ export function Router(params) {
     };
   });
 
-  return new VueRouter({
-    routes: routes.concat({ path: '*', redirect: '/' }),
+  router = new VueRouter({
+    routes: routes?.concat({ path: '*', redirect: '/' }),
     ...restRoute
   });
+
+  return router;
 }
 
 export default {

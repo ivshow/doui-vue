@@ -3,7 +3,7 @@
 #app {
   .navbar .site-name {
     font-size: 1.7rem;
-    color: #08b841;
+    color: @accentColor;
   }
   .search-box {
     width: 500px;
@@ -42,6 +42,14 @@
       display: block;
     }
   }
+  .go-to-top,
+  .copy-action,
+  .demo-block-control:hover {
+    color: @accentColor;
+  }
+  .copy-action-success {
+    color: @error-color;
+  }
 }
 
 .theme-container {
@@ -70,7 +78,7 @@
 .theme-antdocs-content {
   h1 {
     padding-bottom: 1rem;
-    border-bottom: 1px solid #eaecef;
+    border-bottom: 1px solid @borderColor;
   }
   h1 + p {
     margin-bottom: 1rem;

@@ -23,7 +23,7 @@ this.$message.success('提示文案');
 ```js
 const router = new Router({
   base: '',
-  defaultMeta: {},
+  meta: {},
   components: require.context('@/views/', true, /index\.vue$/),
   lazyLoad: filePath => import(`@/views/${filePath}`),
   ...
@@ -34,9 +34,9 @@ const router = new Router({
 
 ```js
 // 配置
-const { state, store, update } = new Vuex({
+const { store, update } = new Vuex({
   saveKeys: ['vuex_common'],
-  initialState: {
+  state: {
     vuex_loading: false,
     vuex_common: {
       language: 'zh-CN'
@@ -49,7 +49,7 @@ this.vuex_loading;
 
 // 修改
 this.$vuex('vuex_loading', true);
-update('vuex_loading', true);
+update('vuex_common.language', 'en-US');
 ```
 
 4. utils:

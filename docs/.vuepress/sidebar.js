@@ -11,7 +11,10 @@ module.exports = [
   { path: '/quickstart', title: '快速上手' },
   {
     title: '基础组件',
-    children: [{ path: '/base/button', title: 'Button 按钮' }]
+    children: [
+      { path: '/base/button', title: 'Button 按钮' },
+      { path: '/base/layout', title: 'Layout 布局' }
+    ]
   },
   {
     title: '表单组件',

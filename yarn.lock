@@ -12126,6 +12126,10 @@ vuepress-plugin-demo-container@./lib/demo-container-v0.2.0.tgz:
   version "0.2.0"
   resolved "./lib/demo-container-v0.2.0.tgz#4a922a5b96633624bab816329213885c89d50f24"
 
+vuepress-plugin-demo-container@./lib/demo-container-v0.2.1.tgz:
+  version "0.2.1"
+  resolved "./lib/demo-container-v0.2.1.tgz#855a2e61f0eb68a6e8286154e7b123fa758fa9f4"
+
 vuepress-plugin-smooth-scroll@^0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-smooth-scroll/-/vuepress-plugin-smooth-scroll-0.0.10.tgz#6cb6926032bd5abd7b928df6e7b73b8dd31b5f9d"

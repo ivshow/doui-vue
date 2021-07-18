@@ -6,7 +6,7 @@ export default ({ Vue, options }) => {
 
   const vuex = new Vuex({
     saveKeys: ['vuex_common'],
-    initialState: {
+    state: {
       vuex_loading: false,
       vuex_common: {
         language: 'zh-CN'
@@ -16,9 +16,9 @@ export default ({ Vue, options }) => {
 
   const router = new Router({
     base: '',
-    defaultMeta: {},
+    meta: {},
     components: require.context('./components', false, /\.vue$/),
-    lazyLoad: filePath => () => import(`./components/${filePath}`)
+    lazyLoad: filePath => import(`./components/${filePath}`)
   });
 
   Vue.mixin({

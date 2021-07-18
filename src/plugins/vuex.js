@@ -13,12 +13,12 @@ import ls from 'local-storage';
 
 /**
  * 1.saveKeys: 需要永久存储在state中的变量名
- * 2.initialState: 加上vuex_前缀，是防止变量名冲突，也让人一目了然
+ * 2.state: 加上vuex_前缀，是防止变量名冲突，也让人一目了然
  */
 
 export let vuex = {};
 
-export function Vuex({ saveKeys, initialState } = {}) {
+export function Vuex({ saveKeys, state: initialState } = {}) {
   const state = _.merge(initialState, ls('saveState'));
 
   const setState = (state, { key, value }) => {
@@ -55,7 +55,7 @@ export function Vuex({ saveKeys, initialState } = {}) {
     }
   });
 
-  vuex = { state, store, update };
+  vuex = { store, update };
 
   return vuex;
 }
