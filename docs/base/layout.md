@@ -1,19 +1,13 @@
 # Layout 布局
 
-继承 `Antd Button`的所有 Api
+继承 `Antd Layout`的所有 Api
 
 ## 基本使用
 
 ::: demo
 
 ```vue
-<template>
-  <d-layout>
-    <template #sider-header>
-      <div class="logo" />
-    </template>
-  </d-layout>
-</template>
+iframe layout.vue
 ```
 
 :::

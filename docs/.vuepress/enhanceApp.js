@@ -1,8 +1,11 @@
 import Doui, { Vuex, Router } from '@';
+import addRouter from './router';
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
 
-export default ({ Vue, options }) => {
+export default ({ Vue, options, router }) => {
   Vue.use(Doui);
+
+  addRouter(router);
 
   const vuex = new Vuex({
     saveKeys: ['vuex_common'],
@@ -12,13 +15,6 @@ export default ({ Vue, options }) => {
         language: 'zh-CN'
       }
     }
-  });
-
-  const router = new Router({
-    base: '',
-    meta: {},
-    components: require.context('./components', false, /\.vue$/),
-    lazyLoad: filePath => import(`./components/${filePath}`)
   });
 
   Vue.mixin({
@@ -31,4 +27,6 @@ export default ({ Vue, options }) => {
       }
     })
   });
+
+  window.addEventListener('load', console.clear);
 };

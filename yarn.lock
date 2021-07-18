@@ -12122,13 +12122,13 @@ vuepress-plugin-container@^2.0.2:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
 
-vuepress-plugin-demo-container@./lib/demo-container-v0.2.0.tgz:
-  version "0.2.0"
-  resolved "./lib/demo-container-v0.2.0.tgz#4a922a5b96633624bab816329213885c89d50f24"
+vuepress-plugin-demo-container@./lib/demo-container-v0.2.5.tgz:
+  version "0.2.5"
+  resolved "./lib/demo-container-v0.2.5.tgz#08d6a0c9d2f8a6e0732e128f08fe4b2613447abc"
 
-vuepress-plugin-demo-container@./lib/demo-container-v0.2.1.tgz:
-  version "0.2.1"
-  resolved "./lib/demo-container-v0.2.1.tgz#855a2e61f0eb68a6e8286154e7b123fa758fa9f4"
+vuepress-plugin-demo-container@./lib/demo-container-v0.2.6.tgz:
+  version "0.2.6"
+  resolved "./lib/demo-container-v0.2.6.tgz#db5feb9f7c894afce9009f3fc8fec4516ca0aca3"
 
 vuepress-plugin-smooth-scroll@^0.0.10:
   version "0.0.10"
