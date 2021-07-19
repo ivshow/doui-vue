@@ -2,7 +2,7 @@ import Doui, { Vuex, Router } from '@';
 import addRouter from './router';
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
 
-export default ({ Vue, options, router }) => {
+export default ({ Vue, options, router, isServer }) => {
   Vue.use(Doui);
 
   addRouter(router);
@@ -28,5 +28,9 @@ export default ({ Vue, options, router }) => {
     })
   });
 
-  window.addEventListener('load', console.clear);
+  !isServer &&
+    window.addEventListener('load', () => {
+      const container = document.querySelector('.theme-container');
+      container && (container.style.display = 'unset');
+    });
 };

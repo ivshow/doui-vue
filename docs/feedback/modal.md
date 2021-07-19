@@ -35,5 +35,5 @@ export default {
 
 | 参数    | 说明         | 类型                      | 默认值 |
 | ------- | ------------ | ------------------------- | ------ |
-| content | 自定义组件   | VNode / function(h)       |        |
-| onOk    | 点击确定回调 | () => Promise&lt;void&gt; |        |
+| content | 自定义组件   | VNode / function(h)       | -      |
+| onOk    | 点击确定回调 | () => Promise&lt;void&gt; | -      |

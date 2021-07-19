@@ -18,11 +18,12 @@
     "ui"
   ],
   "scripts": {
-    "dev": "vuepress dev docs",
+    "dev": "vuepress dev docs --no-cache --debug",
     "build:lib": "vue-cli-service build --target lib --formats umd-min src/index.js && cpx 'src/styles/mixin.scss' dist",
     "deploy:doc": "vuepress build docs && node deploy.js",
     "deploy:lib": "yarn build:lib && release-it -- patch",
-    "release": "npm-run-all deploy:*"
+    "release": "npm-run-all deploy:*",
+    "preview:doc": "vuepress build docs && cd docs/.vuepress/dist && live-server"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.6",
@@ -64,7 +65,7 @@
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.2",
     "vuepress-plugin-clean-urls": "^1.1.2",
-    "vuepress-plugin-demo-container": "./lib/demo-container-v0.2.6.tgz",
+    "vuepress-plugin-demo-container": "./lib/demo-container-v0.2.7.tgz",
     "vuepress-plugin-smooth-scroll": "^0.0.10",
     "vuepress-theme-antdocs": "^1.3.5"
   },

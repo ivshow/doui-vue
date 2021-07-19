@@ -8,12 +8,17 @@
 
 <template>
   <a-layout>
-    <a-layout-sider v-model="collapsed" :trigger="null">
+    <a-layout-sider v-model="collapsed">
       <slot name="sider-header" />
       <a-menu mode="inline" theme="dark">
         <a-sub-menu v-for="(menu, i) in sider" :key="i">
-          <span slot="title"><a-icon :type="menu.icon" v-if="menu.icon" />{{ menu.title }}</span>
-          <a-menu-item v-for="(option, j) in menu.children" :key="`${i}_${j}`">{{ option.title }}</a-menu-item>
+          <span slot="title">
+            <a-icon :type="menu.icon" />
+            <span>{{ menu.title }}</span>
+          </span>
+          <a-menu-item v-for="(option, j) in menu.children" :key="`${i}_${j}`">
+            {{ option.title }}
+          </a-menu-item>
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
@@ -22,7 +27,8 @@
         <a-icon
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="() => (collapsed = !collapsed)"
+          @click="changeCollapsed"
+          v-if="$d.isUndefined(value)"
         />
         <slot name="header" />
       </a-layout-header>
@@ -35,11 +41,22 @@
 
 <script>
 export default {
-  props: ['sider'],
+  props: ['sider', 'value'],
   data() {
     return {
       collapsed: false
     };
+  },
+  methods: {
+    changeCollapsed() {
+      this.collapsed = !this.collapsed;
+      this.$emit('collapse', this.collapsed);
+    }
+  },
+  watch: {
+    value(v) {
+      this.collapsed = v;
+    }
   }
 };
 </script>
@@ -48,10 +65,21 @@ export default {
 .ant-layout-sider {
   overflow-x: hidden;
   height: 100vh;
+
+  .ant-menu {
+    .anticon {
+      margin-right: 5px;
+    }
+  }
 }
 
 .ant-layout-header {
-  background: none;
+  background: #fff;
+  padding: 0 30px;
+
+  .trigger {
+    margin-right: 10px;
+  }
 }
 
 .layout-right {
@@ -62,6 +90,7 @@ export default {
   .ant-layout-content {
     flex: 1;
     overflow: auto;
+    padding: 30px;
   }
 }
 </style>

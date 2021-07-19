@@ -10,12 +10,14 @@
 export default {
   render() {
     return (
-      <div id="iframe-page">
-        <router-view></router-view>
+      <div>
+        <div id="iframe-page">
+          <router-view></router-view>
+        </div>
       </div>
     );
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
