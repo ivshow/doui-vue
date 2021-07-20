@@ -13,24 +13,17 @@
     </template>
     <template #header>layout-header</template>
     <template #body>
-      <div>custom-trigger</div>
+      <a-breadcrumb :routes="vuex_breadcrumb">
+        <template #itemRender="{ route }">
+          {{ route.breadcrumbName }}
+        </template>
+      </a-breadcrumb>
+      <router-view></router-view>
     </template>
   </d-layout>
 </template>
 
 <script>
-const children = [
-  {
-    title: 'option1 '
-  },
-  {
-    title: 'option2 '
-  },
-  {
-    title: 'option3 '
-  }
-];
-
 export default {
   data() {
     return {
@@ -39,12 +32,30 @@ export default {
         {
           title: 'subnav 1',
           icon: 'user',
-          children
+          children: [
+            {
+              title: 'option1',
+              path: 'example-1'
+            },
+            {
+              title: 'option2',
+              path: 'example-2'
+            }
+          ]
         },
         {
           title: 'subnav 2',
           icon: 'team',
-          children
+          children: [
+            {
+              title: 'option1',
+              path: 'example-3'
+            },
+            {
+              title: 'option2',
+              path: 'example-4'
+            }
+          ]
         }
       ]
     };

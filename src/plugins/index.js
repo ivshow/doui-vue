@@ -6,13 +6,12 @@
  * @Blog   : http://dooomi.com
  */
 
-import router from './router';
 import vuex from './vuex';
 import directive from './directive';
 import mixin from './mixin';
 
 const install = Vue => {
-  Vue.use(directive).use(mixin).use(vuex).use(router);
+  Vue.use(directive).use(mixin).use(vuex);
 };
 
 export * from './router';

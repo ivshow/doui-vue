@@ -7,30 +7,16 @@
 -->
 
 <template>
-  <d-layout :sider="sider" @collapse="handleCollapse">
+  <d-layout :sider="sider">
     <template #sider-header>
       <div class="logo" />
     </template>
     <template #header>layout-header</template>
-    <template #body>
-      <div>content</div>
-    </template>
+    <template #body></template>
   </d-layout>
 </template>
 
 <script>
-const children = [
-  {
-    title: 'option1 '
-  },
-  {
-    title: 'option2 '
-  },
-  {
-    title: 'option3 '
-  }
-];
-
 export default {
   data() {
     return {
@@ -38,20 +24,33 @@ export default {
         {
           title: 'subnav 1',
           icon: 'user',
-          children
+          children: [
+            {
+              title: 'option1',
+              path: '/iframe/layout-trigger/example-1'
+            },
+            {
+              title: 'option2',
+              path: '/iframe/layout-trigger/example-2'
+            }
+          ]
         },
         {
           title: 'subnav 2',
           icon: 'team',
-          children
+          children: [
+            {
+              title: 'option1',
+              path: '/iframe/layout-trigger/example-3'
+            },
+            {
+              title: 'option2',
+              path: '/iframe/layout-trigger/example-4'
+            }
+          ]
         }
       ]
     };
-  },
-  methods: {
-    handleCollapse(collapsed) {
-      console.log(collapsed);
-    }
   }
 };
 </script>

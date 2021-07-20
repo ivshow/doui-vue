@@ -28,6 +28,7 @@ iframe layout/custom-trigger.vue
 
 ## 事件
 
-| 事件名称 | 说明                  | 回调参数          |
-| -------- | --------------------- | ----------------- |
-| collapse | 展开-收起时的回调函数 | (collapsed) => {} |
+| 事件名称      | 说明                     | 回调参数                         |
+| ------------- | ------------------------ | -------------------------------- |
+| collapse      | 展开-收起时的回调函数    | function(collapsed)              |
+| clickMenuItem | 点击 MenuItem 调用此函数 | function({ item, key, keyPath }) |

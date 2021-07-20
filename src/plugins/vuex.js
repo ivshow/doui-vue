@@ -18,8 +18,12 @@ import ls from 'local-storage';
 
 export let vuex = {};
 
+const defaultState = {
+  vuex_breadcrumb: []
+};
+
 export function Vuex({ saveKeys, state: initialState } = {}) {
-  const state = _.merge(initialState, ls('saveState'));
+  const state = _.merge(defaultState, initialState, ls('saveState'));
 
   const setState = (state, { key, value }) => {
     const saveKey = key.split('.')[0];
@@ -46,7 +50,7 @@ export function Vuex({ saveKeys, state: initialState } = {}) {
   const update = (key, value) => store.commit('setState', { key, value });
 
   Vue.mixin({
-    created() {
+    beforeCreate() {
       this.$vuex = update;
     },
     computed: {

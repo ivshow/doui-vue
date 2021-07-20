@@ -6,12 +6,41 @@
  * @Blog   : http://dooomi.com
  */
 import Iframe from './iframe';
-import { generateRouters } from '@/plugins';
+
+const exampleRouters = [];
+
+export const generateRouters = ({ components = [], meta: defaultMeta, lazyLoad }) =>
+  components
+    .keys()
+    .map(key => {
+      const { name, meta } = components(key).default;
+      const { path: alias, ...rest } = _.merge({}, defaultMeta, meta);
+      const fileName = key.replace(/\.\//g, '');
+      const path = _.kebabCase(fileName.replace(/(index)?\.vue/gi, ''));
+      const router = {
+        alias,
+        meta: rest,
+        path,
+        component: () => lazyLoad(fileName)
+      };
+
+      if (path.includes('example')) {
+        exampleRouters.push(router);
+        return;
+      }
+
+      return router;
+    })
+    .filter(x => x);
 
 const routers = generateRouters({
-  prefix: '',
   components: require.context('./iframe/', true, /^(?!\.\/index).*\.vue$/),
   lazyLoad: filePath => import(`./iframe/${filePath}`)
+});
+
+routers.forEach(x => {
+  x.redirect = `${x.path}/${exampleRouters[0].path}`;
+  x.children = exampleRouters;
 });
 
 export default router => {

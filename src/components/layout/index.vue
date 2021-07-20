@@ -8,16 +8,23 @@
 
 <template>
   <a-layout>
-    <a-layout-sider v-model="collapsed">
+    <a-layout-sider v-model="collapsed" :theme="theme">
       <slot name="sider-header" />
-      <a-menu mode="inline" theme="dark">
-        <a-sub-menu v-for="(menu, i) in sider" :key="i">
+      <a-menu
+        mode="inline"
+        :theme="theme"
+        :defaultSelectedKeys="defaultSelectedKeys"
+        :defaultOpenKeys="defaultOpenKeys"
+      >
+        <a-sub-menu v-for="(menu, index) in sider" :key="index" @click="handleSubMenu">
           <span slot="title">
             <a-icon :type="menu.icon" />
             <span>{{ menu.title }}</span>
           </span>
-          <a-menu-item v-for="(option, j) in menu.children" :key="`${i}_${j}`">
-            {{ option.title }}
+          <a-menu-item v-for="subMenu in menu.children" :key="subMenu.path">
+            <router-link :to="subMenu.path">
+              {{ subMenu.title }}
+            </router-link>
           </a-menu-item>
         </a-sub-menu>
       </a-menu>
@@ -27,13 +34,15 @@
         <a-icon
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="changeCollapsed"
+          @click="toggleCollapsed"
           v-if="$d.isUndefined(value)"
         />
         <slot name="header" />
       </a-layout-header>
       <a-layout-content>
-        <slot name="body" />
+        <slot name="body">
+          <router-view></router-view>
+        </slot>
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -41,21 +50,52 @@
 
 <script>
 export default {
-  props: ['sider', 'value'],
+  props: {
+    sider: Array,
+    value: {
+      type: Boolean,
+      default: undefined
+    },
+    theme: {
+      type: String,
+      default: 'dark'
+    }
+  },
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      defaultSelectedKeys: [],
+      defaultOpenKeys: []
     };
   },
   methods: {
-    changeCollapsed() {
+    toggleCollapsed() {
       this.collapsed = !this.collapsed;
       this.$emit('collapse', this.collapsed);
+    },
+    handleSubMenu(params) {
+      this.$emit('clickMenuItem', params);
     }
   },
   watch: {
     value(v) {
       this.collapsed = v;
+    },
+    $route: {
+      handler({ path }) {
+        this.sider.some(({ title, children }, index) =>
+          children.some(subMenu => {
+            if (path.includes(subMenu.path)) {
+              const breadcrumb = [title, subMenu.title].map(x => ({ breadcrumbName: x }));
+              this.$vuex('vuex_breadcrumb', breadcrumb);
+              this.defaultSelectedKeys = [subMenu.path];
+              this.defaultOpenKeys = [index];
+              return true;
+            }
+          })
+        );
+      },
+      immediate: true
     }
   }
 };
@@ -90,7 +130,7 @@ export default {
   .ant-layout-content {
     flex: 1;
     overflow: auto;
-    padding: 30px;
+    padding: 20px 30px;
   }
 }
 </style>
