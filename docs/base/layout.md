@@ -32,3 +32,11 @@ iframe layout/custom-trigger.vue
 | ------------- | ------------------------ | -------------------------------- |
 | collapse      | 展开-收起时的回调函数    | function(collapsed)              |
 | clickMenuItem | 点击 MenuItem 调用此函数 | function({ item, key, keyPath }) |
+
+## 插槽
+
+| 事件名称     | 说明       | 默认值            |
+| ------------ | ---------- | ----------------- |
+| sider-header | 侧边栏头部 | -                 |
+| header       | 右侧头部   | -                 |
+| body         | 右侧主体   | `<router-view />` |
