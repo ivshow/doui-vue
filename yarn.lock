@@ -12041,7 +12041,7 @@ vue-ref@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-ref/-/vue-ref-2.0.0.tgz#483084d732abed11da796778a8266a3af0ea1a9c"
   integrity sha512-uKNKpFOVeWNqS2mrBZqnpLyXJo5Q+vnkex6JvpENvhXHFNBW/SJTP8vJywLuVT3DpxwXcF9N0dyIiZ4/NpTexQ==
 
-vue-router@^3.4.5, vue-router@^3.5.2:
+vue-router@^3.4.5:
   version "3.5.2"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.5.2.tgz#5f55e3f251970e36c3e8d88a7cd2d67a350ade5c"
   integrity sha512-807gn82hTnjCYGrnF3eNmIw/dk7/GE4B5h69BlyCK9KHASwSloD1Sjcn06zg9fVG4fYH2DrsNBZkpLtb25WtaQ==
@@ -12121,9 +12121,6 @@ vuepress-plugin-container@^2.0.2:
   dependencies:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
-
-vuepress-plugin-demo-container@../lib-vuepress-plugin-demo-container:
-  version "0.2.7"
 
 vuepress-plugin-demo-container@./lib/demo-container-v0.2.7.tgz:
   version "0.2.7"

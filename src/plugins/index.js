@@ -14,6 +14,5 @@ const install = Vue => {
   Vue.use(directive).use(mixin).use(vuex);
 };
 
-export * from './router';
 export * from './vuex';
 export default { install };

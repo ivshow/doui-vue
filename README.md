@@ -19,7 +19,6 @@
 - 常用的工具方法
 - 自定义指令
 - vuex
-- vue-router
 - css in js
 
 ## 安装
@@ -35,21 +34,15 @@ npm install doui-vue --save
 ```js
 import Vue from 'vue';
 import App from './App';
-import Doui, { Vuex, Router } from 'doui-vue';
+import Doui, { Vuex } from 'doui-vue';
 import 'doui-vue/dist/doui-vue.css';
 
 Vue.use(Doui);
 
 const { store } = new Vuex();
 
-const router = new Router({
-  components: require.context('@/views/', true, /index\.vue$/),
-  lazyLoad: filePath => import(`@/views/${filePath}`)
-});
-
 new Vue({
   store,
-  router,
   render: h => h(App)
 }).$mount('#app');
 ```
@@ -74,19 +67,7 @@ this.$message.success('提示文案');
 ...
 ```
 
-2. vue-router:
-
-```js
-const router = new Router({
-  base: '',
-  meta: {},
-  components: require.context('@/views/', true, /index\.vue$/),
-  lazyLoad: filePath => import(`@/views/${filePath}`),
-  ...
-});
-```
-
-3. vuex:
+2. vuex:
 
 ```js
 // 配置
@@ -108,7 +89,7 @@ this.$vuex('vuex_loading', true);
 update('vuex_common.language', 'en-US');
 ```
 
-4. utils:
+3. utils:
 
 ```js
 // local-storage
@@ -132,7 +113,7 @@ this.$d.cloneDeep();
 ...
 ```
 
-5. 内置样式:
+4. 内置样式:
 
 ```
 .d-rela
@@ -147,13 +128,13 @@ this.$d.cloneDeep();
 ...
 ```
 
-6. 自定义 directive:
+5. 自定义 directive:
 
 ```vue
 <component v-click-outside="onClickOutside"></component>
 ```
 
-7. vue-styled-components:
+6. vue-styled-components:
 
 ```js
 const Title = styled.div`

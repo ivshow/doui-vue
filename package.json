@@ -1,6 +1,6 @@
 {
   "name": "doui-vue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "jaydon<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
@@ -34,7 +34,6 @@
     "normalize.css": "^8.0.1",
     "styled-tools": "^1.7.2",
     "v-click-outside": "^3.1.2",
-    "vue-router": "^3.5.2",
     "vue-styled-components": "./lib/vue-styled-components-v1.6.0.tgz",
     "vuex": "^3.1.3"
   },
