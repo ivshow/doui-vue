@@ -1,6 +1,6 @@
-# Modal 模态框
+# Modal 弹框
 
-继承 `Antd Modal`的所有 Api，弹框内容可以传入自定义组件
+继承 `Antd Modal`的所有 Api，通过函数调用的方式打开弹框
 
 ## 基本使用
 

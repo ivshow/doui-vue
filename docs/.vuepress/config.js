@@ -50,5 +50,6 @@ module.exports = {
         getComponentName: file => 'demo-' + file.replace(/\/|\\/g, '-').toLowerCase()
       }
     ]
-  ]
+  ],
+  extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/router.js']
 };

@@ -1,6 +1,6 @@
 # Drawer 抽屉
 
-继承 `Antd Drawer`的所有 Api，抽屉内容可以传入自定义组件
+继承 `Antd Drawer`的所有 Api，通过函数调用的方式打开抽屉
 
 ## 基本使用
 
