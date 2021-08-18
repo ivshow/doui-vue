@@ -39,7 +39,7 @@ npm install doui-vue --save
 import Vue from 'vue';
 import App from './App';
 import Doui, { Vuex } from 'doui-vue';
-import 'doui-vue/dist/doui-vue.css';
+import 'doui-vue/dist/index.css';
 
 Vue.use(Doui);
 

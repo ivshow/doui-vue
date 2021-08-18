@@ -1,11 +1,11 @@
 {
   "name": "doui-vue",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "jaydon<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
   "repository": "ivshow/doui-vue",
-  "main": "dist/doui-vue.umd.min.js",
+  "main": "dist/index.umd.min.js",
   "private": false,
   "license": "MIT",
   "files": [
@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "dev": "vuepress dev docs --no-cache --debug",
-    "build:lib": "vue-cli-service build --target lib --formats umd-min src/index.js && cpx 'src/styles/mixin.scss' dist",
+    "build:lib": "vue-cli-service build --target lib --formats umd-min --name index src/index.js && cpx 'src/styles/mixin.scss' dist",
     "deploy:doc": "vuepress build docs && node deploy.js",
     "deploy:lib": "yarn build:lib && release-it -- patch",
     "release": "npm-run-all deploy:*",
