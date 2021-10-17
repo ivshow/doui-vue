@@ -7,9 +7,10 @@
  */
 
 import clickOutside from 'v-click-outside';
+import VueClipboard from 'vue-clipboard2';
 
 export default {
   install(Vue) {
-    Vue.use(clickOutside);
+    Vue.use(clickOutside).use(VueClipboard);
   }
 };
