@@ -10,6 +10,7 @@ import { Vue } from '@';
 import BasicVuex, { mapState } from 'vuex';
 import _ from 'lodash';
 import ls from 'local-storage';
+import { getDeviceType } from '@/components/responsive/utils';
 
 /**
  * 1.saveKeys: 需要永久存储在state中的变量名
@@ -19,7 +20,10 @@ import ls from 'local-storage';
 export let vuex = {};
 
 const defaultState = {
-  vuex_breadcrumb: []
+  vuex_breadcrumb: [],
+  vuex_common: {
+    deviceType: getDeviceType()
+  }
 };
 
 export function Vuex({ saveKeys, state: initialState } = {}) {

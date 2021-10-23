@@ -13,7 +13,8 @@ module.exports = [
     title: '基础组件',
     children: [
       { path: '/base/button', title: 'Button 按钮' },
-      { path: '/base/layout', title: 'Layout 布局' }
+      { path: '/base/layout', title: 'Layout 布局' },
+      { path: '/base/responsive', title: 'Responsive 响应式' }
     ]
   },
   {

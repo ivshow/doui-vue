@@ -11,7 +11,6 @@ import plugins from './plugins';
 import utils from './utils';
 import Antd from 'ant-design-vue';
 import './styles/index.scss';
-import 'ant-design-vue/dist/antd.css';
 
 let Vue;
 

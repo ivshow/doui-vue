@@ -6,29 +6,40 @@
  * @Blog   : http://dooomi.com
  */
 
-$sm: 767;
-$md: 1023;
+$sm: 768;
+$md: 1200;
 
 @mixin mobile {
-  @media (max-width: #{$sm}px) {
+  @media (max-width: #{$sm - 1}px) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: #{$sm + 1}px) and (max-width: #{$md}px) {
+  @media (min-width: #{$sm}px) and (max-width: #{$md - 1}px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$md + 1}px) {
+  @media (min-width: #{$md}px) {
     @content;
   }
 }
 
 @mixin no-desktop {
-  @media (max-width: #{$md}px) {
+  @media (max-width: #{$md - 1}px) {
     @content;
   }
+}
+
+@mixin no-mobile {
+  @media (min-width: #{$sm}px) {
+    @content;
+  }
+}
+
+:export {
+  breakpoint_sm: $sm;
+  breakpoint_md: $md;
 }

@@ -4,7 +4,8 @@ module.exports = {
     node: true
   },
   globals: {
-    arguments: 'readonly'
+    arguments: 'readonly',
+    globalThis: 'readonly'
   },
   extends: ['plugin:vue/essential', 'eslint:recommended'],
   parserOptions: {

@@ -1,6 +1,6 @@
 {
   "name": "doui-vue",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "jaydon<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
@@ -108,7 +108,9 @@
       "stylelint-config-standard"
     ],
     "rules": {
-      "at-rule-no-unknown": null
+      "at-rule-no-unknown": null,
+      "selector-pseudo-class-no-unknown": null,
+      "property-no-unknown": null
     }
   },
   "browserslist": [

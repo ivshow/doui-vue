@@ -23,10 +23,10 @@ const install = Vue => {
 
   components.keys().forEach(key =>
     _.forEach(components(key), (component, k) => {
-      if (!component.render) return;
+      if (!(component.render || _.filter(component.mixins, 'render').length)) return;
 
-      const name = k === 'default' ? component.name || _.kebabCase(key.replace(/\.\/|index\.(vue|js)/g, '')) : k;
-      Vue.component(`d-${name.toLowerCase()}`, _.merge({}, defaultProps, component));
+      const name = k === 'default' ? component.name || key.replace(/\.\/|index\.(vue|js)/g, '') : k;
+      Vue.component(`d-${_.kebabCase(name)}`, _.merge({}, defaultProps, component));
     })
   );
 };
