@@ -44,9 +44,9 @@ export const getDeviceType = () => {
 
 export const deviceTypeMixin = type => ({
   render() {
-    return this.vuex_common.deviceType.includes(device[type]) && <div class={type}>{this.$slots.default}</div>;
+    return this.vuex_deviceType.includes(device[type]) && <div class={type}>{this.$slots.default}</div>;
   }
 });
 
-const setDeviceType = () => vuex.update('vuex_common.deviceType', getDeviceType());
+const setDeviceType = () => vuex.update('vuex_deviceType', getDeviceType());
 globalThis.addEventListener?.('resize', _.throttle(setDeviceType, 300));

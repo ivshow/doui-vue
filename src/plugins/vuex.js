@@ -21,13 +21,11 @@ export let vuex = {};
 
 const defaultState = {
   vuex_breadcrumb: [],
-  vuex_common: {
-    deviceType: getDeviceType()
-  }
+  vuex_deviceType: getDeviceType()
 };
 
 export function Vuex({ saveKeys, state: initialState } = {}) {
-  const state = _.merge(defaultState, initialState, ls('saveState'));
+  const state = _.merge(defaultState, initialState, ls('vuex_save_state'));
 
   const setState = (state, { key, value }) => {
     const saveKey = key.split('.')[0];
@@ -35,10 +33,10 @@ export function Vuex({ saveKeys, state: initialState } = {}) {
     _.set(state, key, value);
 
     if (saveKeys?.includes(saveKey)) {
-      const saveState = ls('saveState') || {};
+      const vuex_save_state = ls('vuex_save_state') || {};
 
-      ls('saveState', {
-        ...saveState,
+      ls('vuex_save_state', {
+        ...vuex_save_state,
         [saveKey]: state[saveKey]
       });
     }
