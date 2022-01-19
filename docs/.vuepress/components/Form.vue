@@ -22,7 +22,7 @@
 </template>
 
 <script>
-const defaultform = {
+const defaultForm = {
   user: '',
   password: ''
 };
@@ -31,7 +31,7 @@ export default {
   props: ['value'],
   data() {
     return {
-      form: Object.assign({}, defaultform, this.value),
+      form: Object.assign({}, defaultForm, this.value),
       rules: {
         user: [{ required: true, message: 'Please input Activity name', trigger: 'blur' }],
         password: [{ required: true, message: 'Please input Activity password', trigger: 'blur' }]

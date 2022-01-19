@@ -18,12 +18,13 @@
     "ui"
   ],
   "scripts": {
-    "dev": "vuepress dev docs --no-cache --debug --open",
+    "dev": "vuepress dev docs --no-cache --open",
     "build:lib": "vue-cli-service build --target lib --formats umd-min --name index src/index.js && cpx 'src/styles/mixin.scss' dist",
-    "deploy:doc": "vuepress build docs && node deploy.js",
     "deploy:lib": "yarn build:lib && release-it -- patch",
-    "release": "npm-run-all deploy:*",
-    "preview:doc": "vuepress build docs && cd docs/.vuepress/dist && live-server"
+    "build:doc": "vuepress build docs --silent",
+    "deploy:doc": "yarn build:doc && node deploy.js",
+    "preview:doc": "yarn build:doc && serve docs/.vuepress/dist -s -p 1025",
+    "release": "npm-run-all deploy:*"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.6",
@@ -60,6 +61,7 @@
     "qcloud-upload": "^1.5.0",
     "release-it": "^14.10.0",
     "sass-loader": "^8.0.2",
+    "serve": "^13.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "vue-template-compiler": "^2.6.11",

@@ -12,8 +12,8 @@ const uploadQcloud = require('qcloud-upload');
 const config = {
   Bucket: 'doui-vue-1257301295',
   Region: 'ap-chengdu',
-  SecretId: 'AKID5zd196nDMEqBG4cttc5HCqCNJzPaVBbl',
-  SecretKey: '61kHcljYEj3BAyb2FEwNXQ2NRFm21jAL'
+  SecretId: 'AKIDZuylHWUBcmfHcgTyC9sLXT8VbQyFFyQb',
+  SecretKey: 'vZxHL8dsqXy81dx1nIWT9ZiaCWZLq41h'
 };
 
 const cos = new COS({
