@@ -1,3 +1,11 @@
+/*
+ * @Author : vshow
+ * @Date   : 2021-08-07 22:31
+ * @WeChat : i-vshow
+ * @Email  : vshow@dooomi.com
+ * @Blog   : http://dooomi.com
+ */
+
 import { renderComponent } from '@';
 
 export const openModal = ({ onOk, content, ...props } = {}) => {

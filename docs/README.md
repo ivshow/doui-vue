@@ -1,7 +1,7 @@
 ---
 home: false
 pageClass: index
-footer: MIT Licensed | Copyright © 2021 Written by jaydon
+footer: MIT Licensed | Copyright © 2021 Written by vshow
 ---
 
 # 简介

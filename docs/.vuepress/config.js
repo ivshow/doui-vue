@@ -5,6 +5,8 @@ module.exports = {
   title: 'doui',
   description: 'Common collection based on Vue2 and Ant Design Vue package',
   base: '/',
+  host: 'localhost',
+  port: 1024,
   head: [['link', { rel: 'icon', href: '/assets/logo.png' }]],
   markdown: {
     lineNumbers: false

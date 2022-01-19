@@ -2,7 +2,7 @@
   "name": "doui-vue",
   "version": "1.0.7",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
-  "author": "jaydon<vshow@dooomi.com>",
+  "author": "vshow<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
   "repository": "ivshow/doui-vue",
   "main": "dist/index.umd.min.js",
@@ -18,7 +18,7 @@
     "ui"
   ],
   "scripts": {
-    "dev": "vuepress dev docs --no-cache --debug",
+    "dev": "vuepress dev docs --no-cache --debug --open",
     "build:lib": "vue-cli-service build --target lib --formats umd-min --name index src/index.js && cpx 'src/styles/mixin.scss' dist",
     "deploy:doc": "vuepress build docs && node deploy.js",
     "deploy:lib": "yarn build:lib && release-it -- patch",
