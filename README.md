@@ -19,7 +19,6 @@
 - 常用的工具方法
 - 自定义指令
 - vuex
-- css in js
 
 ## 安装
 
@@ -98,9 +97,6 @@ this.$ls();
 // dayjs
 this.$dayjs();
 
-// cookie
-this.$cookie();
-
 // event
 this.$event.$on();
 this.$event.$emit();
@@ -132,14 +128,6 @@ this.$d.cloneDeep();
 
 ```vue
 <component v-click-outside="onClickOutside"></component>
-```
 
-6. vue-styled-components:
-
-```js
-const Title = styled.div`
-  color: ${props => props.color};
-`;
-
-<Title color="red">Title</Title>;
+<button v-clipboard:copy="message" v-clipboard:success="onCopy">Copy</button>
 ```

@@ -24,19 +24,18 @@
     "build:doc": "vuepress build docs --silent",
     "deploy:doc": "yarn build:doc && node deploy.js",
     "preview:doc": "yarn build:doc && serve docs/.vuepress/dist -s -p 1025",
-    "release": "npm-run-all deploy:*"
+    "release": "npm-run-all deploy:*",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.6",
     "dayjs": "^1.10.5",
-    "js-cookie": "^2.2.1",
-    "local-storage": "./lib/local-storage-v1.4.2.tgz",
+    "local-storage": "^2.0.0",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
-    "styled-tools": "^1.7.2",
+    "patch-package": "^6.4.7",
     "v-click-outside": "^3.1.2",
     "vue-clipboard2": "^0.3.1",
-    "vue-styled-components": "./lib/vue-styled-components-v1.6.0.tgz",
     "vuex": "^3.1.3"
   },
   "devDependencies": {

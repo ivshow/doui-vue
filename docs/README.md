@@ -23,7 +23,6 @@ footer: MIT Licensed | Copyright © 2021 Written by vshow
 - 常用的工具方法
 - 自定义指令
 - vuex
-- css in js
 
 ## 安装
 

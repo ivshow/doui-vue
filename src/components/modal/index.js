@@ -6,10 +6,10 @@
  * @Blog   : http://dooomi.com
  */
 
-import { renderComponent } from '@';
+import { render } from '@';
 
 export const openModal = ({ onOk, content, ...props } = {}) => {
-  const { destroy } = renderComponent({
+  const { destroy } = render({
     data() {
       return {
         visible: true

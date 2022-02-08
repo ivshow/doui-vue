@@ -9,7 +9,6 @@
 import _ from 'lodash';
 import dayjs from 'dayjs';
 import ls from 'local-storage';
-import jsCookie from 'js-cookie';
 import { parseContext, addPrototype } from './common';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/zh-cn';
@@ -24,7 +23,6 @@ const install = Vue => {
   addPrototype('d', Object.assign(utils, _));
   addPrototype('ls', ls);
   addPrototype('dayjs', dayjs);
-  addPrototype('cookie', jsCookie);
   addPrototype('event', new Vue());
 };
 

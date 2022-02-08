@@ -1,0 +1,42 @@
+diff --git a/node_modules/local-storage/local-storage.js b/node_modules/local-storage/local-storage.js
+index 128f937..6db2692 100644
+--- a/node_modules/local-storage/local-storage.js
++++ b/node_modules/local-storage/local-storage.js
+@@ -3,7 +3,7 @@
+ var stub = require('./stub');
+ var parse = require('./parse');
+ var tracking = require('./tracking');
+-var ls = 'localStorage' in global && global.localStorage ? global.localStorage : stub;
++var ls = 'localStorage' in globalThis && globalThis.localStorage ? globalThis.localStorage : stub;
+ 
+ function accessor (key, value) {
+   if (arguments.length === 1) {
+diff --git a/node_modules/local-storage/tracking.js b/node_modules/local-storage/tracking.js
+index 32e57ee..0d62806 100644
+--- a/node_modules/local-storage/tracking.js
++++ b/node_modules/local-storage/tracking.js
+@@ -5,18 +5,18 @@ var listeners = {};
+ var listening = false;
+ 
+ function listen () {
+-  if (global.addEventListener) {
+-    global.addEventListener('storage', change, false);
+-  } else if (global.attachEvent) {
+-    global.attachEvent('onstorage', change);
++  if (globalThis.addEventListener) {
++    globalThis.addEventListener('storage', change, false);
++  } else if (globalThis.attachEvent) {
++    globalThis.attachEvent('onstorage', change);
+   } else {
+-    global.onstorage = change;
++    globalThis.onstorage = change;
+   }
+ }
+ 
+ function change (e) {
+   if (!e) {
+-    e = global.event;
++    e = globalThis.event;
+   }
+   var all = listeners[e.key];
+   if (all) {
