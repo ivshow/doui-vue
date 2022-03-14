@@ -1,4 +1,4 @@
-/*
+/**
  * @Author : vshow
  * @Date   : 2021-06-17 10:55
  * @WeChat : i-vshow
@@ -26,4 +26,10 @@ const install = Vue => {
   addPrototype('event', new Vue());
 };
 
-module.exports = { ...utils, install };
+module.exports = {
+  ...utils,
+  dayjs,
+  ls,
+  _,
+  install
+};
