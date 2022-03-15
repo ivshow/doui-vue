@@ -23,13 +23,7 @@ export const openModal = ({ onOk, content, ...props } = {}) => {
     },
     render(h) {
       return (
-        <a-modal
-          v-model={this.visible}
-          onOk={this.handleOk}
-          afterClose={destroy}
-          confirmLoading={this.vuex_loading}
-          attrs={props}
-        >
+        <a-modal v-model={this.visible} onOk={this.handleOk} afterClose={destroy} attrs={props}>
           {typeof content === 'function' ? content(h) : content}
         </a-modal>
       );

@@ -8,27 +8,24 @@
 
 <template>
   <a-layout>
+    <!-- sideBar -->
     <a-layout-sider v-model="collapsed" :theme="theme">
       <slot name="sider-header" />
-      <a-menu
-        mode="inline"
-        :theme="theme"
-        :defaultSelectedKeys="defaultSelectedKeys"
-        :defaultOpenKeys="defaultOpenKeys"
-      >
-        <a-sub-menu v-for="(menu, index) in sider" :key="index" @click="handleSubMenu">
-          <span slot="title">
-            <a-icon :type="menu.icon" />
-            <span>{{ menu.title }}</span>
-          </span>
-          <a-menu-item v-for="subMenu in menu.children" :key="subMenu.path">
-            <router-link :to="subMenu.path">
-              {{ subMenu.title }}
-            </router-link>
+      <a-menu mode="inline" :theme="theme" v-model="selectedKeys" :openKeys.sync="openKeys">
+        <template v-for="(menu, index) in sider">
+          <sub-menu v-if="menu.children" :key="index" :menu="menu" />
+
+          <a-menu-item v-else :key="index">
+            <span slot="title">
+              <a-icon :type="menu.icon" />
+              <span>{{ menu.title }}</span>
+            </span>
           </a-menu-item>
-        </a-sub-menu>
+        </template>
       </a-menu>
     </a-layout-sider>
+
+    <!-- layout right -->
     <a-layout class="layout-right">
       <a-layout-header>
         <a-icon
@@ -49,6 +46,8 @@
 </template>
 
 <script>
+import SubMenu from './sub-menu';
+
 export default {
   props: {
     sider: Array,
@@ -61,11 +60,12 @@ export default {
       default: 'dark'
     }
   },
+  components: { SubMenu },
   data() {
     return {
       collapsed: false,
-      defaultSelectedKeys: [],
-      defaultOpenKeys: []
+      selectedKeys: [],
+      openKeys: []
     };
   },
   methods: {
@@ -82,18 +82,24 @@ export default {
       this.collapsed = v;
     },
     $route: {
-      handler({ path }) {
-        this.sider.some(({ title, children }, index) =>
-          children.some(subMenu => {
-            if (path.includes(subMenu.path)) {
-              const breadcrumb = [title, subMenu.title].map(x => ({ breadcrumbName: x }));
+      handler({ path: curPath }) {
+        const loop = (menu, crumb = [], parentKeys = []) => {
+          return menu.some(({ key, title, path, children }) => {
+            const breadcrumb = [...crumb, { title, path }];
+
+            if (children) {
+              return loop(children, breadcrumb, [...parentKeys, key]);
+            }
+
+            if (curPath.includes(path)) {
               this.$vuex('vuex_breadcrumb', breadcrumb);
-              this.defaultSelectedKeys = [subMenu.path];
-              this.defaultOpenKeys = [index];
+              this.selectedKeys = [path];
+              this.openKeys = parentKeys;
               return true;
             }
-          })
-        );
+          });
+        };
+        loop(this.sider);
       },
       immediate: true
     }
@@ -103,7 +109,6 @@ export default {
 
 <style lang="scss" scoped>
 .ant-layout-sider {
-  overflow-x: hidden;
   height: 100vh;
 
   .ant-menu {
@@ -115,7 +120,7 @@ export default {
 
 .ant-layout-header {
   background: #fff;
-  padding: 0 30px;
+  padding: 0 20px;
 
   .trigger {
     margin-right: 10px;
@@ -130,7 +135,7 @@ export default {
   .ant-layout-content {
     flex: 1;
     overflow: auto;
-    padding: 20px 30px;
+    padding: 20px;
   }
 }
 </style>

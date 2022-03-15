@@ -30,30 +30,34 @@ export default {
       collapsed: false,
       sider: [
         {
+          key: '1',
           title: 'subnav 1',
           icon: 'user',
           children: [
             {
+              key: '1.1',
               title: 'option1',
-              path: 'example-1'
+              icon: 'user',
+              path: '/iframe/layout-trigger/example-1'
             },
             {
+              key: '1.2',
+              icon: 'user',
               title: 'option2',
-              path: 'example-2'
+              path: '/iframe/layout-trigger/example-2'
             }
           ]
         },
         {
+          key: '2',
           title: 'subnav 2',
           icon: 'team',
           children: [
             {
+              key: '2.1',
+              icon: 'team',
               title: 'option1',
-              path: 'example-3'
-            },
-            {
-              title: 'option2',
-              path: 'example-4'
+              path: '/iframe/layout-trigger/example-21'
             }
           ]
         }

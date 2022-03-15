@@ -25,7 +25,6 @@ this.$message.success('提示文案');
 const { store, update } = new Vuex({
   saveKeys: ['vuex_common'],
   state: {
-    vuex_loading: false,
     vuex_common: {
       language: 'zh-CN'
     }
@@ -33,10 +32,10 @@ const { store, update } = new Vuex({
 });
 
 // 读取
-this.vuex_loading;
+this.vuex_common.language;
 
 // 修改
-this.$vuex('vuex_loading', true);
+this.$vuex('vuex_common.language', 'zh-CN');
 update('vuex_common.language', 'en-US');
 ```
 

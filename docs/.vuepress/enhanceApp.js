@@ -10,7 +10,6 @@ export default ({ Vue, options, router, isServer }) => {
   const vuex = new Vuex({
     saveKeys: ['vuex_common'],
     state: {
-      vuex_loading: false,
       vuex_common: {
         language: 'zh-CN'
       }

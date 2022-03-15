@@ -8,7 +8,16 @@
 
 import { render } from '@';
 
-export const openDrawer = ({ onOk, content, ...props } = {}) => {
+export const openDrawer = ({
+  onOk,
+  onClose,
+  content,
+  okText = '确定',
+  cancelText = '取消',
+  okButtonProps,
+  cancelButtonProps,
+  ...props
+} = {}) => {
   const { destroy } = render({
     data() {
       return {
@@ -18,9 +27,10 @@ export const openDrawer = ({ onOk, content, ...props } = {}) => {
     methods: {
       async handleOk() {
         await onOk?.();
-        this.handleClose();
+        this.visible = false;
       },
-      handleClose() {
+      async handleClose() {
+        await onClose?.();
         this.visible = false;
       }
     },
@@ -30,7 +40,6 @@ export const openDrawer = ({ onOk, content, ...props } = {}) => {
           wrapClassName="d-drawer"
           visible={this.visible}
           placement="right"
-          onOk={this.handleOk}
           afterVisibleChange={destroy}
           width="500"
           onClose={this.handleClose}
@@ -39,11 +48,11 @@ export const openDrawer = ({ onOk, content, ...props } = {}) => {
           <div class="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
           <div class="d-drawer-footer">
             <a-space size="middle">
-              <d-button type="default" onClick={this.handleClose}>
-                取消
+              <d-button type="default" onClick={this.handleClose} attrs={cancelButtonProps}>
+                {cancelText}
               </d-button>
-              <d-button onClick={this.handleOk} loading={this.vuex_loading}>
-                确定
+              <d-button onClick={this.handleOk} attrs={okButtonProps}>
+                {okText}
               </d-button>
             </a-space>
           </div>

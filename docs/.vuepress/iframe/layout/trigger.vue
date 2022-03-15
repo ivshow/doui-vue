@@ -12,7 +12,11 @@
       <div class="logo" />
     </template>
     <template #header>layout-header</template>
-    <template #body></template>
+    <template #body>
+      <a-breadcrumb>
+        <a-breadcrumb-item v-for="(item, index) in vuex_breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
+      </a-breadcrumb>
+    </template>
   </d-layout>
 </template>
 
@@ -22,30 +26,34 @@ export default {
     return {
       sider: [
         {
+          key: '1',
           title: 'subnav 1',
           icon: 'user',
           children: [
             {
+              key: '1.1',
               title: 'option1',
+              icon: 'user',
               path: '/iframe/layout-trigger/example-1'
             },
             {
+              key: '1.2',
+              icon: 'user',
               title: 'option2',
               path: '/iframe/layout-trigger/example-2'
             }
           ]
         },
         {
+          key: '2',
           title: 'subnav 2',
           icon: 'team',
           children: [
             {
+              key: '2.1',
+              icon: 'team',
               title: 'option1',
-              path: '/iframe/layout-trigger/example-3'
-            },
-            {
-              title: 'option2',
-              path: '/iframe/layout-trigger/example-4'
+              path: '/iframe/layout-trigger/example-21'
             }
           ]
         }
