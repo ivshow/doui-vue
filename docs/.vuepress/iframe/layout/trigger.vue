@@ -12,10 +12,11 @@
       <div class="logo" />
     </template>
     <template #header>layout-header</template>
-    <template #body>
+    <template #body="{ breadcrumb }">
       <a-breadcrumb>
-        <a-breadcrumb-item v-for="(item, index) in vuex_breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
+        <a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">{{ item.title }}</a-breadcrumb-item>
       </a-breadcrumb>
+      <router-view />
     </template>
   </d-layout>
 </template>

@@ -12,7 +12,7 @@ export default {
     return (
       <div>
         <div id="iframe-page">
-          <router-view></router-view>
+          <router-view />
         </div>
       </div>
     );

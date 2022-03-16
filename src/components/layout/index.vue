@@ -11,14 +11,21 @@
     <!-- sideBar -->
     <a-layout-sider v-model="collapsed" :theme="theme">
       <slot name="sider-header" />
-      <a-menu mode="inline" :theme="theme" v-model="selectedKeys" :openKeys.sync="openKeys">
+      <a-menu
+        mode="inline"
+        :theme="theme"
+        v-model="selectedKeys"
+        :openKeys.sync="openKeys"
+        v-bind="menuProps"
+        v-on="menuListeners"
+      >
         <template v-for="(menu, index) in sider">
-          <sub-menu v-if="menu.children" :key="index" :menu="menu" />
+          <sub-menu v-if="menu.children" :key="index" :menu="menu" v-bind="subMenuProps" v-on="subMenuListeners" />
 
           <a-menu-item v-else :key="index">
             <span slot="title">
               <a-icon :type="menu.icon" />
-              <span>{{ menu.title }}</span>
+              <span class="menu-title">{{ menu.title }}</span>
             </span>
           </a-menu-item>
         </template>
@@ -37,7 +44,7 @@
         <slot name="header" />
       </a-layout-header>
       <a-layout-content>
-        <slot name="body">
+        <slot name="body" :breadcrumb="breadcrumb">
           <router-view></router-view>
         </slot>
       </a-layout-content>
@@ -58,23 +65,25 @@ export default {
     theme: {
       type: String,
       default: 'dark'
-    }
+    },
+    menuProps: Object,
+    menuListeners: Object,
+    subMenuProps: Object,
+    subMenuListeners: Object
   },
   components: { SubMenu },
   data() {
     return {
       collapsed: false,
       selectedKeys: [],
-      openKeys: []
+      openKeys: [],
+      breadcrumb: []
     };
   },
   methods: {
     toggleCollapsed() {
       this.collapsed = !this.collapsed;
       this.$emit('collapse', this.collapsed);
-    },
-    handleSubMenu(params) {
-      this.$emit('clickMenuItem', params);
     }
   },
   watch: {
@@ -92,7 +101,7 @@ export default {
             }
 
             if (curPath.includes(path)) {
-              this.$vuex('vuex_breadcrumb', breadcrumb);
+              this.breadcrumb = breadcrumb;
               this.selectedKeys = [path];
               this.openKeys = parentKeys;
               return true;

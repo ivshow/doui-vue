@@ -20,7 +20,6 @@ import { getDeviceType } from '@/components/responsive/utils';
 export let vuex = {};
 
 const defaultState = {
-  vuex_breadcrumb: [],
   vuex_deviceType: getDeviceType()
 };
 

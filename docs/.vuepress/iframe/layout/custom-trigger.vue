@@ -12,13 +12,18 @@
       <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="() => (collapsed = !collapsed)" />
     </template>
     <template #header>layout-header</template>
-    <template #body>
-      <a-breadcrumb :routes="vuex_breadcrumb">
-        <template #itemRender="{ route }">
-          {{ route.breadcrumbName }}
+    <template #body="{ breadcrumb }">
+      <a-breadcrumb :routes="breadcrumb">
+        <template #itemRender="{ routes, route, paths }">
+          <router-link v-if="routes.indexOf(route) === 0" :to="route.path">
+            {{ route.title }}
+          </router-link>
+          <span v-else>
+            {{ route.title }}
+          </span>
         </template>
       </a-breadcrumb>
-      <router-view></router-view>
+      <router-view />
     </template>
   </d-layout>
 </template>
@@ -33,18 +38,19 @@ export default {
           key: '1',
           title: 'subnav 1',
           icon: 'user',
+          path: '/',
           children: [
             {
               key: '1.1',
               title: 'option1',
               icon: 'user',
-              path: '/iframe/layout-trigger/example-1'
+              path: '/iframe/layout-custom-trigger/example-1'
             },
             {
               key: '1.2',
               icon: 'user',
               title: 'option2',
-              path: '/iframe/layout-trigger/example-2'
+              path: '/iframe/layout-custom-trigger/example-2'
             }
           ]
         },
