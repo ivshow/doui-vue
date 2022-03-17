@@ -1,4 +1,4 @@
-import Doui, { Vuex } from '@';
+import Doui, { Vuex } from 'doui-vue';
 import addRouter from './router';
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
 

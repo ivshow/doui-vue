@@ -24,7 +24,7 @@
 
           <a-menu-item v-else :key="index">
             <span slot="title">
-              <a-icon :type="menu.icon" />
+              <a-icon v-if="menu.icon" :type="menu.icon" />
               <span class="menu-title">{{ menu.title }}</span>
             </span>
           </a-menu-item>
@@ -100,7 +100,7 @@ export default {
               return loop(children, breadcrumb, [...parentKeys, key]);
             }
 
-            if (curPath.includes(path)) {
+            if (curPath === path) {
               this.breadcrumb = breadcrumb;
               this.selectedKeys = [path];
               this.openKeys = parentKeys;
