@@ -9,7 +9,7 @@
 import { render } from '@';
 
 export const openModal = ({ onOk, content, ...props } = {}) => {
-  const { destroy } = render({
+  const vm = render({
     data() {
       return {
         visible: true
@@ -23,14 +23,14 @@ export const openModal = ({ onOk, content, ...props } = {}) => {
     },
     render(h) {
       return (
-        <a-modal v-model={this.visible} onOk={this.handleOk} afterClose={destroy} attrs={props}>
+        <a-modal v-model={this.visible} onOk={this.handleOk} afterClose={vm?.destroy} attrs={props}>
           {typeof content === 'function' ? content(h) : content}
         </a-modal>
       );
     }
   });
 
-  return destroy;
+  return vm;
 };
 
 export * from './drawer';

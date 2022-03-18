@@ -18,7 +18,7 @@ export const openDrawer = ({
   cancelButtonProps,
   ...props
 } = {}) => {
-  const { destroy } = render({
+  const vm = render({
     data() {
       return {
         visible: true
@@ -40,7 +40,7 @@ export const openDrawer = ({
           wrapClassName="d-drawer"
           visible={this.visible}
           placement="right"
-          afterVisibleChange={destroy}
+          afterVisibleChange={vm?.destroy}
           width="500"
           onClose={this.handleClose}
           attrs={props}
@@ -61,5 +61,5 @@ export const openDrawer = ({
     }
   });
 
-  return destroy;
+  return vm;
 };
