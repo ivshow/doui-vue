@@ -10,7 +10,7 @@ import { render } from '@';
 
 export const openDrawer = ({
   onOk,
-  onClose,
+  onCancel,
   content,
   okText = '确定',
   cancelText = '取消',
@@ -30,7 +30,7 @@ export const openDrawer = ({
         this.visible = false;
       },
       async handleClose() {
-        await onClose?.();
+        await onCancel?.();
         this.visible = false;
       }
     },
@@ -43,15 +43,15 @@ export const openDrawer = ({
           afterVisibleChange={vm?.destroy}
           width="500"
           onClose={this.handleClose}
-          attrs={props}
+          props={props}
         >
           <div class="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
           <div class="d-drawer-footer">
             <a-space size="middle">
-              <d-button type="default" onClick={this.handleClose} attrs={cancelButtonProps}>
+              <d-button type="default" onClick={this.handleClose} props={cancelButtonProps}>
                 {cancelText}
               </d-button>
-              <d-button onClick={this.handleOk} attrs={okButtonProps}>
+              <d-button onClick={this.handleOk} props={okButtonProps}>
                 {okText}
               </d-button>
             </a-space>

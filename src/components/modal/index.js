@@ -8,7 +8,7 @@
 
 import { render } from '@';
 
-export const openModal = ({ onOk, content, ...props } = {}) => {
+export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
   const vm = render({
     data() {
       return {
@@ -23,7 +23,13 @@ export const openModal = ({ onOk, content, ...props } = {}) => {
     },
     render(h) {
       return (
-        <a-modal v-model={this.visible} onOk={this.handleOk} afterClose={vm?.destroy} attrs={props}>
+        <a-modal
+          v-model={this.visible}
+          onOk={this.handleOk}
+          onCancel={() => onCancel?.()}
+          afterClose={vm?.destroy}
+          props={props}
+        >
           {typeof content === 'function' ? content(h) : content}
         </a-modal>
       );
