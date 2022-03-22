@@ -12,22 +12,33 @@ export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
   const vm = render({
     data() {
       return {
-        visible: true
+        visible: true,
+        loading: false
       };
     },
     methods: {
       async handleOk() {
-        await onOk?.();
+        try {
+          this.loading = true;
+          await onOk?.();
+          this.visible = false;
+        } finally {
+          this.loading = false;
+        }
+      },
+      async handleCancel() {
+        await onCancel?.();
         this.visible = false;
       }
     },
     render(h) {
       return (
         <a-modal
-          v-model={this.visible}
+          visible={this.visible}
           onOk={this.handleOk}
-          onCancel={() => onCancel?.()}
+          onCancel={this.handleCancel}
           afterClose={vm?.destroy}
+          confirmLoading={this.loading}
           props={props}
         >
           {typeof content === 'function' ? content(h) : content}
