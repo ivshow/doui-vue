@@ -20,13 +20,19 @@
         v-on="menuListeners"
       >
         <template v-for="(menu, index) in sider">
-          <sub-menu v-if="menu.children" :key="index" :menu="menu" v-bind="subMenuProps" v-on="subMenuListeners" />
+          <sub-menu
+            v-if="menu.children && menu.children.length"
+            :key="index"
+            :menu="menu"
+            v-bind="subMenuProps"
+            v-on="subMenuListeners"
+          />
 
           <a-menu-item v-else :key="index">
-            <span slot="title">
+            <router-link :to="menu.path">
               <a-icon v-if="menu.icon" :type="menu.icon" />
               <span class="menu-title">{{ menu.title }}</span>
-            </span>
+            </router-link>
           </a-menu-item>
         </template>
       </a-menu>
