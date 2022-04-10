@@ -42,7 +42,7 @@ import 'doui-vue/dist/index.css';
 
 Vue.use(Doui);
 
-const { store } = new Vuex();
+const store = new Vuex();
 
 new Vue({
   store,

@@ -19,16 +19,16 @@
         v-bind="menuProps"
         v-on="menuListeners"
       >
-        <template v-for="(menu, index) in sider">
+        <template v-for="menu in sider">
           <sub-menu
             v-if="menu.children && menu.children.length"
-            :key="index"
+            :key="menu.key"
             :menu="menu"
             v-bind="subMenuProps"
             v-on="subMenuListeners"
           />
 
-          <a-menu-item v-else :key="index">
+          <a-menu-item v-else :key="menu.key">
             <router-link :to="menu.path">
               <a-icon v-if="menu.icon" :type="menu.icon" />
               <span class="menu-title">{{ menu.title }}</span>
@@ -100,7 +100,7 @@ export default {
       handler({ path: curPath }) {
         const loop = (menu, crumb = [], parentKeys = []) => {
           return menu.some(({ key, title, path, children }) => {
-            const breadcrumb = [...crumb, { title, path }];
+            const breadcrumb = [...crumb, { title, path, key }];
 
             if (children) {
               return loop(children, breadcrumb, [...parentKeys, key]);
@@ -108,7 +108,7 @@ export default {
 
             if (curPath === path) {
               this.breadcrumb = breadcrumb;
-              this.selectedKeys = [path];
+              this.selectedKeys = [key];
               this.openKeys = parentKeys;
               return true;
             }

@@ -38,7 +38,7 @@ import 'doui-vue/dist/index.css';
 
 Vue.use(Doui);
 
-const { store } = new Vuex();
+const store = new Vuex();
 
 new Vue({
   store,
@@ -69,8 +69,10 @@ this.$message.success('提示文案');
 2. vuex:
 
 ```js
+import { Vuex, vuex } from 'doui-vue';
+
 // 配置
-const { store, update } = new Vuex({
+const store = new Vuex({
   saveKeys: ['vuex_common'],
   state: {
     vuex_common: {
@@ -81,10 +83,11 @@ const { store, update } = new Vuex({
 
 // 读取
 this.vuex_common.language;
+vuex('vuex_common.language'); // 'zh-CN'
 
 // 修改
 this.$vuex('vuex_common.language', 'zh-CN');
-update('vuex_common.language', 'en-US');
+vuex('vuex_common.language', 'en-US');
 ```
 
 3. utils:

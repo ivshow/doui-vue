@@ -48,5 +48,5 @@ export const deviceTypeMixin = type => ({
   }
 });
 
-const setDeviceType = () => vuex.update('vuex_deviceType', getDeviceType());
+const setDeviceType = () => vuex('vuex_deviceType', getDeviceType());
 globalThis.addEventListener?.('resize', _.throttle(setDeviceType, 300));

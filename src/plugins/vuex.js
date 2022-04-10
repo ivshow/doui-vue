@@ -11,13 +11,14 @@ import BasicVuex, { mapState } from 'vuex';
 import _ from 'lodash';
 import ls from 'local-storage';
 import { getDeviceType } from '@/components/responsive/utils';
+import { addPrototype } from '@/utils';
 
 /**
  * 1.saveKeys: 需要永久存储在state中的变量名
  * 2.state: 加上vuex_前缀，是防止变量名冲突，也让人一目了然
  */
 
-export let vuex = {};
+export let vuex;
 
 const defaultState = {
   vuex_deviceType: getDeviceType()
@@ -48,21 +49,32 @@ export function Vuex({ saveKeys, state: initialState } = {}) {
     }
   });
 
-  const update = (key, value) => store.commit('setState', { key, value });
+  const update = (...args) => {
+    if (!args?.length) {
+      return store.state;
+    }
+
+    const [key, value] = args;
+
+    if (args.length === 1) {
+      return store.state[key];
+    }
+
+    store.commit('setState', { key, value });
+  };
+
+  vuex = update;
+  vuex.store = store;
+  addPrototype('vuex', update);
 
   Vue.mixin({
-    beforeCreate() {
-      this.$vuex = update;
-    },
     computed: {
       // 将vuex的state中的所有变量，解构到全局混入的mixin中
       ...mapState(Object.keys(state))
     }
   });
 
-  vuex = { store, update };
-
-  return vuex;
+  return store;
 }
 
 export default {

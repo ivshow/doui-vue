@@ -7,7 +7,7 @@ export default ({ Vue, options, router, isServer }) => {
 
   addRouter(router);
 
-  const vuex = new Vuex({
+  const store = new Vuex({
     saveKeys: ['vuex_common'],
     state: {
       vuex_common: {
@@ -18,7 +18,7 @@ export default ({ Vue, options, router, isServer }) => {
 
   Vue.mixin({
     created() {
-      this.$d.merge(this.$store, vuex.store);
+      this.$d.merge(this.$store, store);
     },
     provide: () => ({
       localeData: {
