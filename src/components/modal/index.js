@@ -7,6 +7,7 @@
  */
 
 import { render } from '@';
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
 export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
   const vm = render({
@@ -33,16 +34,18 @@ export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
     },
     render(h) {
       return (
-        <a-modal
-          visible={this.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          afterClose={vm?.destroy}
-          confirmLoading={this.loading}
-          props={props}
-        >
-          {typeof content === 'function' ? content(h) : content}
-        </a-modal>
+        <a-config-provider locale={zhCN}>
+          <a-modal
+            visible={this.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            afterClose={vm?.destroy}
+            confirmLoading={this.loading}
+            props={props}
+          >
+            {typeof content === 'function' ? content(h) : content}
+          </a-modal>
+        </a-config-provider>
       );
     }
   });

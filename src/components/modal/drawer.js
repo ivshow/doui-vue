@@ -7,6 +7,7 @@
  */
 
 import { render } from '@';
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
 export const openDrawer = ({
   onOk,
@@ -36,27 +37,29 @@ export const openDrawer = ({
     },
     render(h) {
       return (
-        <a-drawer
-          wrapClassName="d-drawer"
-          visible={this.visible}
-          placement="right"
-          afterVisibleChange={vm?.destroy}
-          width="500"
-          onClose={this.handleClose}
-          props={props}
-        >
-          <div class="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
-          <div class="d-drawer-footer">
-            <a-space size="middle">
-              <d-button type="default" onClick={this.handleClose} props={cancelButtonProps}>
-                {cancelText}
-              </d-button>
-              <d-button onClick={this.handleOk} props={okButtonProps}>
-                {okText}
-              </d-button>
-            </a-space>
-          </div>
-        </a-drawer>
+        <a-config-provider locale={zhCN}>
+          <a-drawer
+            wrapClassName="d-drawer"
+            visible={this.visible}
+            placement="right"
+            afterVisibleChange={vm?.destroy}
+            width="500"
+            onClose={this.handleClose}
+            props={props}
+          >
+            <div className="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
+            <div className="d-drawer-footer">
+              <a-space size="middle">
+                <d-button type="default" onClick={this.handleClose} props={cancelButtonProps}>
+                  {cancelText}
+                </d-button>
+                <d-button onClick={this.handleOk} props={okButtonProps}>
+                  {okText}
+                </d-button>
+              </a-space>
+            </div>
+          </a-drawer>
+        </a-config-provider>
       );
     }
   });

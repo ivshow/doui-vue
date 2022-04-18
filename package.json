@@ -1,6 +1,6 @@
 {
   "name": "doui-vue",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Common collection based on Vue2 and Ant Design Vue package",
   "author": "vshow<vshow@dooomi.com>",
   "homepage": "http://doui.dooomi.com",
@@ -54,6 +54,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "husky": "^4.2.5",
     "lint-staged": "^11.0.0",
+    "moment-locales-webpack-plugin": "^1.2.0",
+    "moment-timezone-data-webpack-plugin": "^1.5.0",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",

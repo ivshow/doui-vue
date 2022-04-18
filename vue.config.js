@@ -7,6 +7,7 @@
  */
 
 const path = require('path');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
   publicPath: '',
@@ -26,6 +27,11 @@ module.exports = {
         '@images': '@/assets/images',
         '@locales': '@/assets/locales'
       }
-    }
+    },
+    plugins: [
+      new MomentLocalesPlugin({
+        localesToKeep: ['zh-cn']
+      })
+    ]
   }
 };
