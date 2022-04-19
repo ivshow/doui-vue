@@ -6,7 +6,7 @@
  * @Blog   : http://dooomi.com
  */
 
-import { render } from '@';
+import { _, render } from '@';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
 export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
@@ -14,25 +14,43 @@ export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
     data() {
       return {
         visible: true,
-        loading: false
+        confirmLoading: false,
+        cancelLoading: false
       };
     },
     methods: {
       async handleOk() {
         try {
-          this.loading = true;
+          this.confirmLoading = true;
           await onOk?.();
           this.visible = false;
         } finally {
-          this.loading = false;
+          this.confirmLoading = false;
         }
       },
-      async handleCancel() {
-        await onCancel?.();
-        this.visible = false;
+      async handleCancel(e) {
+        try {
+          const { className } = e.target;
+          const isButton = typeof className === 'string' && e.target.className.includes('cancel-button');
+
+          this.cancelLoading = true;
+          await onCancel?.({ isButton });
+          this.visible = false;
+        } finally {
+          this.cancelLoading = false;
+        }
       }
     },
     render(h) {
+      const baseProps = {
+        cancelButtonProps: {
+          props: {
+            loading: this.cancelLoading
+          },
+          class: 'cancel-button'
+        }
+      };
+
       return (
         <a-config-provider locale={zhCN}>
           <a-modal
@@ -40,8 +58,8 @@ export const openModal = ({ onOk, content, onCancel, ...props } = {}) => {
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             afterClose={vm?.destroy}
-            confirmLoading={this.loading}
-            props={props}
+            confirmLoading={this.confirmLoading}
+            props={_.merge(baseProps, props)}
           >
             {typeof content === 'function' ? content(h) : content}
           </a-modal>
