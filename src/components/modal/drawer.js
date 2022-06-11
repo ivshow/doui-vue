@@ -47,15 +47,15 @@ export const openDrawer = ({
             onClose={this.handleClose}
             props={props}
           >
-            <div className="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
-            <div className="d-drawer-footer">
+            <div class="d-drawer-content">{typeof content === 'function' ? content(h) : content}</div>
+            <div class="d-drawer-footer">
               <a-space size="middle">
-                <d-button type="default" onClick={this.handleClose} props={cancelButtonProps}>
+                <a-button onClick={this.handleClose} props={cancelButtonProps}>
                   {cancelText}
-                </d-button>
-                <d-button onClick={this.handleOk} props={okButtonProps}>
+                </a-button>
+                <a-button type="primary" onClick={this.handleOk} props={okButtonProps}>
                   {okText}
-                </d-button>
+                </a-button>
               </a-space>
             </div>
           </a-drawer>

@@ -7,7 +7,7 @@
 -->
 
 <template>
-  <d-form ref="form" :model="form" :rules="rules">
+  <a-form-model ref="form" :model="form" :rules="rules">
     <a-form-model-item label="name" prop="user">
       <a-input v-model="form.user" placeholder="username">
         <a-icon slot="prefix" type="user" style="color: rgba(0, 0, 0, 0.25)" />
@@ -18,7 +18,7 @@
         <a-icon slot="prefix" type="lock" style="color: rgba(0, 0, 0, 0.25)" />
       </a-input>
     </a-form-model-item>
-  </d-form>
+  </a-form-model>
 </template>
 
 <script>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     submit() {
-      return this.$refs.form.submit();
+      return new Promise(resolve => this.$refs.form.validate(valid => valid && resolve(this.$attrs.model)));
     }
   }
 };

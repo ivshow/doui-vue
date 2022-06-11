@@ -8,7 +8,7 @@
 
 ```vue
 <template>
-  <d-button @click="handleOpen">打开弹框</d-button>
+  <a-button type="primary" @click="handleOpen">打开弹框</a-button>
 </template>
 
 <script>
